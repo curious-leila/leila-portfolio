@@ -29,12 +29,12 @@
         <div class="hero-actions"><a class="button primary" href="#about">认识我</a><a class="button" href="#projects">核心经历</a><a class="button" href="#contact">联系我</a></div>
         <a class="scroll-link" href="#projects">向下查看项目 <span aria-hidden="true">↓</span></a>
       </div>
-      <aside class="profile-card" aria-label="个人信息">
+      <div class="hero-visual"><figure class="hero-art"><img src="./assets/leila-illustration.png" width="1536" height="1024" alt="纸感手绘插画：长发、戴眼镜的 Leila 身穿白裙，抱着向日葵花束。" fetchpriority="high"></figure><aside class="profile-card" aria-label="个人信息">
         <div class="profile-top"><span class="profile-caption">关于 Leila</span><span class="profile-badge">2027 届</span></div>
         <div class="profile-item"><h2>2027 届硕士</h2><p>中国海洋大学（985） · 翻译学 · <strong>1/27</strong></p></div>
         <div class="profile-item"><h2>AI 产品实践</h2><p>Agent · LLM Evaluation · Workflow</p></div>
         <div class="profile-item availability"><h2><span class="status-dot" aria-hidden="true"></span>求职状态</h2><p>AI 产品经理实习 · 随时到岗</p><p>可实习 3 个月以上 · 每周 5 天</p></div>
-      </aside>
+      </aside></div>
     </section>
 
     <section id="about" class="section" aria-labelledby="about-title">
@@ -49,7 +49,7 @@
 
     <section id="projects" class="section" aria-labelledby="projects-title">
       <div class="section-heading"><h2 id="projects-title">核心经历</h2><span class="heading-line" aria-hidden="true"></span><span class="section-note">把评测发现，转化为产品规则</span></div>
-      <article class="project featured" aria-labelledby="project-agent">
+      <div class="projects-group"><article class="project featured" aria-labelledby="project-agent">
         <header class="project-header">
           <div class="project-title-row"><span class="project-number">01</span><span class="project-tag">项目经历</span><h3 id="project-agent">面向大模型译文的审校决策 Agent</h3></div>
           <div class="project-meta"><span class="project-role">AI 产品设计与开发</span><span class="project-date">2026.08–2026.09</span></div>
@@ -92,12 +92,12 @@
           <div class="work-module"><h4>Prompt 调优</h4><p>完成 <strong>8 轮 Prompt 与模型迭代</strong>，解决<strong>批量输出解析失败与分类边界不清</strong>问题，实现 <strong>159 / 159 条模型结构化结果成功解析</strong>。</p></div>
         </div><p class="fact-note">口径说明：159 / 159 指结构化结果成功解析，不是分类准确率。</p></div>
         <details><summary><span class="when-closed">查看项目复盘</span><span class="when-open">收起项目复盘</span><span class="disclosure-symbol" aria-hidden="true">＋</span></summary><div class="retrospective"><h4>从检索导出之后开始自动化</h4><p>学校权限与检索策略由用户掌握，工作流接手后续重复的解析、去重、分级与整理。围绕个人阅读需求完成闭环，先验证这段流程是否可用，不把需求扩展成通用研究平台。</p><h4>8 轮迭代，解决输出与筛选规则的问题</h4><p>将不稳定的 JSON 调整为管道分隔格式，改善批量解析；补充正向条件和负面排除规则，减少标题命中但研究角度无关的判断；调整模型以获得更具体的判定理由。</p><h4>区分流程可用与判断正确</h4><p>结构化结果能被程序解析，只能证明输出可处理；没有独立人工金标，不能声称相关度分类准确率。当前仅在自己的研究主题中完成真实运行，最终阅读与取舍仍由用户完成。</p><a class="source-link" href="https://github.com/curious-leila/literature-tracker#readme" target="_blank" rel="noopener noreferrer">复盘依据：项目 README ↗</a></div></details>
-      </article>
+      </article></div>
     </section>
 
     <section id="skills" class="section" aria-labelledby="skills-title"><div class="section-heading"><h2 id="skills-title">能力概览</h2><span class="heading-line" aria-hidden="true"></span></div><div class="skills-grid"><div><span class="skill-number" aria-hidden="true">01</span><h3>AI 产品与 Agent</h3><p>Agent 工作流与权限拆分；评测框架、信度与口径验证；Prompt 调优</p></div><div><span class="skill-number" aria-hidden="true">02</span><h3>产品设计</h3><p>需求拆解输出 PRD；梳理交互规则与异常流程</p></div><div><span class="skill-number" aria-hidden="true">03</span><h3>原型与开发</h3><p>使用 Codex 辅助制作 HTML / Web 交互原型并部署</p></div><div><span class="skill-number" aria-hidden="true">04</span><h3>数据分析与语言能力</h3><p>SQL 查询与统计；TEM-8；CET-6（六级）604；口译与辩论国奖</p></div></div></section>
 
-    <section id="contact" class="contact section" aria-labelledby="contact-title"><div class="section-heading"><h2 id="contact-title">联系我</h2></div><p>求职方向：AI 产品经理实习生。欢迎通过邮件联系。</p><div class="contact-actions"><a class="email" href="mailto:tjy18726041937@163.com">tjy18726041937@163.com</a><button class="button copy-button" id="copy-email" type="button">复制邮箱</button></div><p class="copy-status" id="copy-status" role="status" aria-live="polite"></p></section>
+    <section id="contact" class="section" aria-labelledby="contact-title"><div class="section-heading"><h2 id="contact-title">联系我</h2><span class="heading-line" aria-hidden="true"></span></div><div class="contact"><p>求职方向：AI 产品经理实习生。欢迎通过邮件联系。</p><div class="contact-actions"><a class="email" href="mailto:tjy18726041937@163.com">tjy18726041937@163.com</a><button class="button copy-button" id="copy-email" type="button">复制邮箱</button></div><p class="copy-status" id="copy-status" role="status" aria-live="polite"></p></div></section>
   </main>
   <footer>Leila · AI 产品作品集</footer>
 </body>
