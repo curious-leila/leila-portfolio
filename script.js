@@ -18,7 +18,11 @@ function fallbackCopy() {
 }
 
 copyButton.addEventListener('click', async () => {
+  if (copyButton.getAttribute('aria-busy') === 'true') return;
   clearTimeout(resetTimer);
+  copyButton.setAttribute('aria-busy', 'true');
+  copyButton.textContent = '复制中…';
+  copyStatus.textContent = '';
   let copied = false;
   try {
     if (navigator.clipboard && window.isSecureContext) {
@@ -29,10 +33,29 @@ copyButton.addEventListener('click', async () => {
   if (!copied) {
     try { copied = fallbackCopy(); } catch { copied = false; }
   }
-  copyButton.textContent = copied ? '已复制 ✓' : '复制邮箱';
+  copyButton.setAttribute('aria-busy', 'false');
+  copyButton.textContent = copied ? '已复制 ✓' : '重试复制';
+  copyStatus.dataset.state = copied ? 'success' : 'error';
   copyStatus.textContent = copied ? '邮箱已复制到剪贴板。' : '未能自动复制，请长按或选中上方邮箱手动复制。';
-  resetTimer = setTimeout(() => {
-    copyButton.textContent = '复制邮箱';
-    copyStatus.textContent = '';
-  }, 2500);
+  if (copied) {
+    resetTimer = setTimeout(() => {
+      copyButton.textContent = '复制邮箱';
+      copyStatus.textContent = '';
+      delete copyStatus.dataset.state;
+    }, 2500);
+  }
 });
+
+// Keep navigation state aligned with the section currently being read.
+if ('IntersectionObserver' in window) {
+  const navigationLinks = [...document.querySelectorAll('nav a')];
+  const sectionObserver = new IntersectionObserver((entries) => {
+    const active = entries.find((entry) => entry.isIntersecting);
+    if (!active) return;
+    navigationLinks.forEach((link) => {
+      if (link.hash === `#${active.target.id}`) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }, { rootMargin: '-15% 0px -65% 0px', threshold: 0 });
+  document.querySelectorAll('main > section[id], .hero').forEach((section) => sectionObserver.observe(section));
+}
