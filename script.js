@@ -59,3 +59,27 @@ if ('IntersectionObserver' in window) {
   }, { rootMargin: '-15% 0px -65% 0px', threshold: 0 });
   document.querySelectorAll('main > section[id], .hero').forEach((section) => sectionObserver.observe(section));
 }
+
+// Compact mobile navigation: click, keyboard, outside click and breakpoint reset.
+const menuToggle = document.querySelector('.menu-toggle');
+const mainNav = document.getElementById('main-nav');
+function closeMenu(returnFocus = false) {
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.setAttribute('aria-label', '展开导航');
+  mainNav.classList.remove('is-open');
+  if (returnFocus) menuToggle.focus();
+}
+menuToggle.addEventListener('click', () => {
+  const open = menuToggle.getAttribute('aria-expanded') !== 'true';
+  menuToggle.setAttribute('aria-expanded', String(open));
+  menuToggle.setAttribute('aria-label', open ? '收起导航' : '展开导航');
+  mainNav.classList.toggle('is-open', open);
+});
+mainNav.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') closeMenu(true);
+});
+document.addEventListener('click', event => {
+  if (!event.target.closest('.header-inner')) closeMenu();
+});
+window.matchMedia('(max-width: 600px)').addEventListener('change', () => closeMenu());
