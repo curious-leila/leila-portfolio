@@ -392,3 +392,47 @@ details[open] summary{border-radius:10px 10px 0 0}
   .project{margin-bottom:20px}
   .project:last-child{margin-bottom:0;padding-bottom:14px}
 }
+
+/* One outline system: color lives in fills, every visible edge stays deep purple. */
+:root{--outline-deep:#66516f;--outline-soft:#9b88a2}
+.site-header,footer{border-color:var(--outline-deep)}
+.brand,nav,.profile-card,.section-heading h2,.about-surface,.education-grid,
+.direction,.projects-group,.project,.project-header,details,.skills-grid,
+.skills-grid>div,.contact,.email,.button,.secondary-link,
+.project-number,.project-tag,.skill-number{border-color:var(--outline-deep)}
+.profile-item,.case-background,.education+.education,.skills-grid h3{
+  border-color:var(--outline-soft);
+}
+details[open] summary{border-bottom-color:var(--outline-deep)}
+.project,.project+.project{border-color:var(--outline-deep)}
+.hero-actions .button,.project-links .button.primary,.project-links .secondary-link{
+  border-color:var(--outline-deep);
+}
+.button:hover,.secondary-link:hover,.button.primary:hover,.copy-button:hover,
+.project-links .button.primary:hover,.project-links .secondary-link:hover{
+  border-color:var(--outline-deep);
+}
+.direction,.skills-grid,.skills-grid>div{box-shadow:4px 5px 0 #66516f55}
+.project-links .button.primary:hover,.project-links .secondary-link:hover{
+  box-shadow:4px 7px 0 #66516f66;
+}
+.skills-grid>div{background:#fff}
+.hero-copy::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:-64px -84px -54px -72px;
+  border-radius:46%;
+  background:radial-gradient(ellipse at 43% 48%,#fffefbed 0%,#fffdf5cf 53%,#fffdf57d 67%,#fffdf500 84%);
+  filter:blur(9px);
+  pointer-events:none;
+}
+
+@media(max-width:600px){
+  .hero-copy::before{
+    inset:-30px -20px -28px -24px;
+    border-radius:38%;
+    background:radial-gradient(ellipse at 42% 45%,#fffefbf2 0%,#fffdf5d9 58%,#fffdf56b 76%,#fffdf500 92%);
+    filter:blur(6px);
+  }
+}
