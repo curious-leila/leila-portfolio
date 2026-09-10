@@ -296,3 +296,99 @@ nav{box-shadow:3px 4px 0 #8a709a55}
   .education+.education{padding-top:19px}
   .direction{grid-template-columns:1fr;gap:8px}
 }
+
+/* Strong borders, shared hover depth, framed projects, and four skill colors. */
+.site-header{border-bottom-width:2px}
+.brand,nav,.profile-card,.section-heading h2,.about-surface,.education-grid,
+.direction,.projects-group,.project,.project-header,details,.skills-grid,
+.skills-grid>div,.contact,.email,.button,.secondary-link{border-width:2px}
+.profile-item{border-bottom-width:2px}
+.profile-item:last-child{border-bottom-width:0}
+.project-number,.project-tag,.skill-number{border-width:2px}
+.case-background,.skills-grid h3{border-bottom-width:2px}
+.education+.education{border-top-width:2px}
+details[open] summary{border-bottom-width:2px}
+
+.button,.secondary-link{box-shadow:3px 4px 0 #8a709a66}
+.button:hover,.secondary-link:hover{
+  box-shadow:4px 7px 0 #8a709a66;
+  transform:translateY(-3px);
+}
+.brand:hover{box-shadow:3px 6px 0 #8a709a66;transform:translateY(-3px)}
+.hero-actions .button:hover{box-shadow:4px 7px 0 #8a709a66}
+.project-links .button.primary:hover{box-shadow:4px 7px 0 #b67d9680}
+.project-links .secondary-link:hover{box-shadow:4px 7px 0 #c89bad70}
+.button:active,.secondary-link:active,.hero-actions .button:active,
+.project-links .button:active,.project-links .secondary-link:active{
+  box-shadow:0 1px 0 #8a709a;
+  transform:translateY(2px);
+}
+nav a{transition:background .2s,color .2s,transform .2s,box-shadow .2s,font-weight .2s}
+nav a:hover,nav a[aria-current="location"]:hover{
+  background:#ffe999;
+  color:#4e3c18;
+  font-weight:800;
+  box-shadow:2px 3px 0 #d0ad4e99;
+  transform:translateY(-2px);
+}
+
+.projects-group{
+  padding:28px;
+  border-left-width:4px;
+  box-shadow:5px 6px 0 #8f72a04d;
+}
+.projects-group:before{display:none}
+.project{
+  margin:0 0 28px;
+  padding:24px;
+  background:#fff;
+  border:2px solid #b99bc9;
+  border-radius:16px;
+  box-shadow:4px 5px 0 #9072a044;
+}
+.project+.project{margin-top:0;padding-top:24px;border-top:2px solid #b99bc9}
+.project:last-child{margin-bottom:0;padding-bottom:24px}
+.project-header{border-color:#d2bfdd}
+
+details{
+  overflow:hidden;
+  border-color:#735d7d;
+  border-radius:12px;
+  box-shadow:3px 4px 0 #78638266;
+}
+summary{
+  justify-content:center;
+  gap:8px;
+  min-height:52px;
+  text-align:center;
+  background:#bfe8fb;
+  color:#283b48;
+  border-radius:10px;
+  transition:background .18s,color .18s;
+}
+summary:hover{background:#9fdbf7;color:#172f3d;box-shadow:none}
+summary:active{background:#8ecfee}
+.disclosure-symbol{font-size:15px;line-height:1;transition:transform .2s}
+details[open] .disclosure-symbol{transform:rotate(180deg)}
+details[open] summary{border-radius:10px 10px 0 0}
+
+.skills-grid{border-color:#b99bc9;box-shadow:5px 6px 0 #8f72a044}
+.skills-grid>div{
+  background:var(--skill-bg);
+  border-color:var(--skill-border);
+  box-shadow:4px 5px 0 var(--skill-shadow);
+}
+.skills-grid>div:nth-child(1){--skill-bg:#fff0f6;--skill-head:#f7c5d9;--skill-border:#d995b2;--skill-shadow:#c888a366}
+.skills-grid>div:nth-child(2){--skill-bg:#fff8dc;--skill-head:#ffe997;--skill-border:#d5b857;--skill-shadow:#c4a34266}
+.skills-grid>div:nth-child(3){--skill-bg:#edfbf6;--skill-head:#c8efdf;--skill-border:#79baa7;--skill-shadow:#64a28f66}
+.skills-grid>div:nth-child(4){--skill-bg:#eff9ff;--skill-head:#c7eafe;--skill-border:#79b6d5;--skill-shadow:#6ca5c266}
+.skills-grid h3{background:var(--skill-head);border-color:var(--skill-border)}
+.skill-number{border-color:var(--skill-border);background:#fffdfd}
+
+@media(max-width:600px){
+  .menu-toggle:hover{box-shadow:3px 6px 0 #8a709a66;transform:translateY(-2px)}
+  .projects-group{padding:16px 12px;border-left-width:4px}
+  .project,.project+.project{padding:14px}
+  .project{margin-bottom:20px}
+  .project:last-child{margin-bottom:0;padding-bottom:14px}
+}
