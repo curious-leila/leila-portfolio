@@ -561,7 +561,7 @@ details[open] summary{border-bottom-color:var(--outline-deep)}
 /* Restore the halo footprint from before the hero content was compacted. */
 .hero-copy::before{
   inset:auto 70px auto -70px;
-  top:-18px;
+  top:-85px;
   height:507px;
 }
 
@@ -571,6 +571,7 @@ details[open] summary{border-bottom-color:var(--outline-deep)}
   width:fit-content;
   max-width:100%;
 }
+#contact .email,#contact .email:hover{color:#17141a}
 
 /* Keep text crisp: only the card plate receives the subtle vertical turn. */
 @media(min-width:951px){
@@ -599,7 +600,7 @@ details[open] summary{border-bottom-color:var(--outline-deep)}
 @media(max-width:600px){
   .hero-copy::before{
     inset:auto 0 auto -12px;
-    top:-12px;
+    top:-79px;
     height:432px;
   }
   #contact .contact{width:100%}
