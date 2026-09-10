@@ -50,7 +50,7 @@ nav a:hover{color:var(--accent-hover);transform:translateY(-2px)}
 .profile-card{position:absolute;right:0;top:50%;transform:translateY(-50%);width:27%;padding:24px 27px;border:1px solid #dfd4e5;border-radius:20px;background:#fffffff2;box-shadow:0 12px 36px #62477712;pointer-events:auto}
 .profile-top{margin-bottom:0}.profile-caption{visibility:hidden}.profile-badge{background:#f1e5ee;border:0;color:#745785;font-size:15px;font-weight:500;padding:2px 16px}
 .profile-item{padding:20px 0;border-color:#e2d8e7}.profile-item h2{font-family:Georgia,'Songti SC',SimSun,serif;font-size:23px;color:#303143;font-weight:700;margin-bottom:7px}.profile-item p{font-size:16px;line-height:1.85}.profile-item:last-child{padding-bottom:4px}
-.section{max-width:1180px;margin:0 auto;padding-top:58px;padding-bottom:20px;scroll-margin-top:6px}
+.section{max-width:1180px;margin:0 auto;padding-top:58px;padding-bottom:20px;scroll-margin-top:0}
 .section-heading{margin-bottom:25px}.section-heading h2{font-family:'Songti SC',SimSun,serif;font-size:29px;font-weight:700;color:#624775;background:#ece2f2;padding:7px 20px;border:1px solid #d6c5e1;border-radius:12px;box-shadow:none}
 .about-surface,.projects-group,.contact{border:1.5px solid #cebadb;box-shadow:var(--shadow);background:#fff}
 .projects-group{border-left:4px solid #9c78b0;padding:30px 30px 30px 48px}.projects-group:before{background:#d1bddf;width:2px;left:23px}
@@ -136,6 +136,7 @@ nav a{min-height:42px;padding:3px 18px;font-size:16px}
 }
 
 /* Tighter hero composition and smooth editorial type. */
+html{scroll-padding-top:72px}
 .header-inner{height:72px}
 .brand{
   font-family:"Times New Roman",Times,serif;
@@ -201,7 +202,7 @@ nav a{min-height:44px;padding:2px 17px;font-weight:700}
 }
 
 @media(max-width:600px){
-  html{scroll-padding-top:82px}
+  html{scroll-padding-top:68px}
   .header-inner{height:68px;min-height:68px;padding:8px 0}
   .brand{font-size:22px;padding:3px 10px}
   nav{top:60px}
@@ -241,7 +242,7 @@ nav{box-shadow:3px 4px 0 #8a709a55}
 .education+.education{padding-top:22px;border-top:1.5px dashed #aa96b7}
 .education-top{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
 .date{order:-1;width:auto;font-size:15px;font-weight:600;color:#81758b}
-.education h3{font-size:20px;font-weight:750}
+.education h3{font-size:17px;font-weight:750}
 .education p{font-size:16px;line-height:1.75;margin-top:7px}
 .direction{
   grid-template-columns:135px 1fr;
@@ -463,7 +464,7 @@ details[open] summary{border-bottom-color:var(--outline-deep)}
 /* Keep the three reading modules comfortable and consistent on wide screens. */
 #about,#projects,#skills{
   width:100%;
-  max-width:1080px;
+  max-width:1050px;
 }
 #contact{
   width:100%;
