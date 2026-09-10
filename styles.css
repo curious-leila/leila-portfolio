@@ -429,7 +429,7 @@ details[open] summary{border-bottom-color:var(--outline-deep)}
 }
 .eyebrow{
   position:relative;
-  top:7px;
+  top:14px;
   margin-bottom:23px;
   font-size:12px;
   letter-spacing:2.4px;
@@ -451,7 +451,14 @@ details[open] summary{border-bottom-color:var(--outline-deep)}
 .hero-actions .button:nth-child(1):hover{background:#f29fbe;color:#342b39}
 .hero-actions .button:nth-child(2):hover{background:#9fe3cd;color:#342b39}
 .hero-actions .button:nth-child(3):hover{background:#9edbf7;color:#342b39}
-.scroll-link{gap:6px}
+.scroll-link{gap:6px;margin-left:2em}
+
+@media(min-width:951px){
+  .profile-card{
+    transform:perspective(1400px) rotateX(-1deg);
+    transform-origin:50% 45%;
+  }
+}
 
 /* Keep the three reading modules comfortable and consistent on wide screens. */
 #about,#projects,#skills{
@@ -471,8 +478,82 @@ details[open] summary{border-bottom-color:var(--outline-deep)}
     background:radial-gradient(ellipse at 42% 50%,#fffefbf7 0%,#fffdf5e8 58%,#fffdf580 77%,#fffdf500 96%);
     filter:blur(4px);
   }
-  .eyebrow{top:5px;margin-bottom:22px;font-size:11px;letter-spacing:2px}
+  .eyebrow{top:10px;margin-bottom:22px;font-size:11px;letter-spacing:2px}
   .hero-actions .button{min-height:44px;padding:7px 15px;font-size:15px}
   #about,#projects,#skills,#contact{max-width:none}
   #contact .contact{padding:22px 18px}
+}
+
+/* Remove nested containers: the page background separates each module. */
+.skills-grid{
+  padding:0;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+}
+.skills-grid>div{
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.skills-grid>div:hover{
+  transform:translateY(-3px);
+  box-shadow:6px 8px 0 #66516f55;
+}
+
+.projects-group{
+  padding:0 0 0 25px;
+  background:transparent;
+  border-width:0 0 0 4px;
+  border-style:solid;
+  border-color:var(--outline-deep);
+  border-radius:0;
+  box-shadow:none;
+}
+.project-header{
+  padding:0 0 20px;
+  background:transparent;
+  border:0;
+  border-radius:0;
+}
+
+@media(max-width:600px){
+  .projects-group{padding:0 0 0 12px}
+  .project-header{padding:0 0 17px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .skills-grid>div:hover{transform:none}
+}
+
+/* Compact hero hierarchy: less type, tighter vertical rhythm. */
+.eyebrow{
+  margin-bottom:12px;
+  font-size:10px;
+}
+.hero-greeting{
+  font-size:clamp(40px,3.25vw,54px);
+  line-height:1.12;
+}
+.hero-name{
+  font-size:clamp(58px,5.15vw,84px);
+  line-height:1.06;
+}
+.hero-tags{
+  margin:10px 0 0;
+  font-size:clamp(17px,1.4vw,22px);
+  line-height:1.45;
+}
+.hero-actions{margin-top:13px}
+.scroll-link{
+  margin-top:11px;
+  font-size:14px;
+}
+
+@media(max-width:600px){
+  .eyebrow{font-size:10px;margin-bottom:11px}
+  .hero-greeting{font-size:36px}
+  .hero-name{font-size:48px;line-height:1.06}
+  .hero-tags{font-size:14px;margin-top:9px;line-height:1.55}
+  .hero-actions{margin-top:12px}
+  .scroll-link{margin-top:10px;font-size:13px}
 }
