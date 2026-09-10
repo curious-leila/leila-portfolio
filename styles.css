@@ -601,7 +601,12 @@ details[open] summary{border-bottom-color:var(--outline-deep)}
   .hero-copy::before{
     inset:auto 0 auto -12px;
     top:-79px;
-    height:432px;
+    height:calc(100% + 79px);
   }
+  .hero-visual{
+    position:relative;
+    z-index:3;
+  }
+  .profile-card{background:#fff}
   #contact .contact{width:100%}
 }
