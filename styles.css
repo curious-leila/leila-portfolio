@@ -421,11 +421,18 @@ details[open] summary{border-bottom-color:var(--outline-deep)}
   content:"";
   position:absolute;
   z-index:-1;
-  inset:-30px -28px -30px -34px;
-  border-radius:46%;
-  background:radial-gradient(ellipse at 42% 48%,#fffefbf7 0%,#fffdf5e8 56%,#fffdf575 75%,#fffdf500 94%);
+  inset:-18px 70px -30px -70px;
+  border-radius:50%;
+  background:radial-gradient(ellipse at 38% 50%,#fffefbf7 0%,#fffdf5e8 56%,#fffdf575 76%,#fffdf500 95%);
   filter:blur(4px);
   pointer-events:none;
+}
+.eyebrow{
+  position:relative;
+  top:7px;
+  margin-bottom:23px;
+  font-size:12px;
+  letter-spacing:2.4px;
 }
 
 /* Compact, clearly differentiated hero actions. */
@@ -444,13 +451,28 @@ details[open] summary{border-bottom-color:var(--outline-deep)}
 .hero-actions .button:nth-child(1):hover{background:#f29fbe;color:#342b39}
 .hero-actions .button:nth-child(2):hover{background:#9fe3cd;color:#342b39}
 .hero-actions .button:nth-child(3):hover{background:#9edbf7;color:#342b39}
+.scroll-link{gap:6px}
+
+/* Keep the three reading modules comfortable and consistent on wide screens. */
+#about,#projects,#skills{
+  width:100%;
+  max-width:1080px;
+}
+#contact{
+  width:100%;
+  max-width:740px;
+}
+#contact .contact{padding:27px 31px}
 
 @media(max-width:600px){
   .hero-copy::before{
-    inset:-20px -8px -20px -10px;
+    inset:-12px 0 -20px -12px;
     border-radius:42%;
-    background:radial-gradient(ellipse at 42% 45%,#fffefbf7 0%,#fffdf5e8 58%,#fffdf580 76%,#fffdf500 96%);
+    background:radial-gradient(ellipse at 42% 50%,#fffefbf7 0%,#fffdf5e8 58%,#fffdf580 77%,#fffdf500 96%);
     filter:blur(4px);
   }
+  .eyebrow{top:5px;margin-bottom:22px;font-size:11px;letter-spacing:2px}
   .hero-actions .button{min-height:44px;padding:7px 15px;font-size:15px}
+  #about,#projects,#skills,#contact{max-width:none}
+  #contact .contact{padding:22px 18px}
 }
