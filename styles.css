@@ -134,3 +134,87 @@ nav a{min-height:42px;padding:3px 18px;font-size:16px}
   .email{width:100%;font-size:17px;padding:9px 13px}
   .copy-button{width:100%}
 }
+
+/* Tighter hero composition and smooth editorial type. */
+.header-inner{height:72px}
+.brand{
+  font-family:"Times New Roman",Times,serif;
+  font-size:26px;
+  font-style:italic;
+  font-weight:700;
+  letter-spacing:-1px;
+  padding:3px 12px;
+  border-radius:11px;
+}
+nav{padding:3px 8px}
+nav a{min-height:38px;padding:2px 17px;font-weight:700}
+.hero{
+  width:100%;
+  max-width:1280px;
+  margin-inline:auto;
+  grid-template-columns:minmax(0,1.25fr) minmax(340px,.75fr);
+  gap:clamp(48px,5.5vw,86px);
+  min-height:calc(100svh - 72px);
+  padding:clamp(62px,7vh,88px) 0;
+}
+.hero:before{top:-72px}
+.hero-copy{max-width:700px;padding-left:24px}
+.hero-visual{padding-right:24px}
+.hero-greeting{font-size:clamp(42px,3.45vw,56px)}
+.hero-name{font-size:clamp(60px,5.35vw,86px)}
+.hero-name em{
+  font-family:"Times New Roman",Times,serif;
+  font-style:italic;
+  font-weight:700;
+  letter-spacing:-3px;
+}
+.eyebrow{font-size:14px}
+.hero-tags{font-size:clamp(19px,1.55vw,24px)}
+.hero-description{
+  max-width:640px;
+  color:#3f3a47;
+  font-size:16px;
+  font-weight:600;
+  line-height:1.85;
+  text-shadow:0 1px 8px #fff;
+}
+.hero-actions .button{min-height:52px;font-size:17px}
+.scroll-link{font-size:16px}
+.profile-card{max-width:430px;padding:23px 26px}
+.profile-item h2{font-size:20px}
+.profile-item p{font-size:15px}
+.email{
+  font-family:"Times New Roman",Times,"Songti SC",SimSun,serif;
+  font-size:22px;
+  font-weight:700;
+  font-variant-numeric:lining-nums tabular-nums;
+  letter-spacing:0;
+  line-height:1.25;
+}
+
+@media(max-width:950px){
+  .hero{max-width:none;grid-template-columns:1fr;padding:54px 0 66px}
+  .hero-copy{padding-left:0}
+  .hero-visual{padding-right:0}
+  .hero:before{top:-72px}
+}
+
+@media(max-width:600px){
+  html{scroll-padding-top:82px}
+  .header-inner{height:68px;min-height:68px;padding:8px 0}
+  .brand{font-size:22px;padding:3px 10px}
+  nav{top:60px}
+  nav a{font-weight:700}
+  .hero{padding:38px 0 50px;gap:28px}
+  .hero:before{top:-68px}
+  .hero-greeting{font-size:38px}
+  .hero-name{font-size:50px}
+  .hero-name em{letter-spacing:-2px}
+  .hero-tags{font-size:17px}
+  .hero-description{font-size:15px;line-height:1.8}
+  .hero-actions .button{font-size:15px}
+  .profile-card{padding:18px 20px}
+  .profile-item h2{font-size:19px}
+  .profile-item p{font-size:15px}
+  .email{font-size:17px;line-height:1.25}
+}
