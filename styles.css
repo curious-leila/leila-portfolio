@@ -28,7 +28,7 @@ nav{border:1px solid #d9cde2;border-radius:40px;padding:7px 15px;box-shadow:0 4p
 nav a{font-size:17px;padding:5px 20px;font-weight:600;border-radius:24px;transition:background .2s,color .2s,transform .2s}
 nav a:hover{color:var(--accent-hover);transform:translateY(-2px)}
 .hero{position:relative;isolation:isolate;display:block;min-height:calc(100svh - 104px);padding:100px 0 120px;align-content:center}
-.hero:before{content:"";position:absolute;z-index:-2;top:-104px;bottom:0;left:calc((100% - 100vw)/2);width:100vw;background:linear-gradient(90deg,#fffdf5b8 0%,#fffafb8a 45%,#faf5ff55 100%),url('./assets/lavender-garden.png') center/cover}
+.hero:before{content:"";position:absolute;z-index:-2;top:-104px;bottom:0;left:calc((100% - 100vw)/2);width:100vw;background:linear-gradient(90deg,#fffdf548 0%,#fffafb29 48%,#faf5ff1f 100%),url('./assets/lavender-garden.png') center/cover}
 .hero-copy{position:relative;width:55%;z-index:2;padding-bottom:20px}
 .eyebrow{font-family:Georgia,serif;font-size:15px;letter-spacing:3px;margin-bottom:25px}
 .hero-greeting{font-family:HelloBrush,KaiTi,serif;font-size:clamp(46px,4.2vw,68px);margin-bottom:4px}
@@ -65,7 +65,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #79
 @media(prefers-reduced-motion:reduce){.scroll-link:hover span,nav a:hover{transform:none}}
 /* Final composition: full skirt remains separate from the profile card. */
 @media(min-width:951px){.hero-art{bottom:64px}.profile-item:first-of-type{padding-top:12px}}
-@media(max-width:600px){.hero{min-height:0;padding:42px 0 26px}.hero-visual{position:relative;inset:auto;height:655px;margin-top:18px}.hero-art{top:0;bottom:auto;right:2%;height:300px;width:58%}.profile-card{bottom:0;top:auto;background:#fff}.hero:before{background-image:linear-gradient(90deg,#fffdf5c9,#faf5ff80),url('./assets/lavender-garden.png')}}
+@media(max-width:600px){.hero{min-height:0;padding:42px 0 26px}.hero-visual{position:relative;inset:auto;height:655px;margin-top:18px}.hero-art{top:0;bottom:auto;right:2%;height:300px;width:58%}.profile-card{bottom:0;top:auto;background:#fff}.hero:before{background-image:linear-gradient(90deg,#fffdf547,#faf5ff24),url('./assets/lavender-garden.png')}}
 
 /* Reference typography: Song-style editorial serif, no brush lettering. */
 @font-face{font-family:PortfolioSerif;src:url('./assets/portfolio-serif.woff2') format('woff2');font-weight:200 900;font-style:normal;font-display:swap}
@@ -421,18 +421,36 @@ details[open] summary{border-bottom-color:var(--outline-deep)}
   content:"";
   position:absolute;
   z-index:-1;
-  inset:-64px -84px -54px -72px;
+  inset:-30px -28px -30px -34px;
   border-radius:46%;
-  background:radial-gradient(ellipse at 43% 48%,#fffefbed 0%,#fffdf5cf 53%,#fffdf57d 67%,#fffdf500 84%);
-  filter:blur(9px);
+  background:radial-gradient(ellipse at 42% 48%,#fffefbf7 0%,#fffdf5e8 56%,#fffdf575 75%,#fffdf500 94%);
+  filter:blur(4px);
   pointer-events:none;
 }
 
+/* Compact, clearly differentiated hero actions. */
+.hero-actions .button{
+  min-width:0;
+  min-height:46px;
+  padding:7px 20px;
+  font-size:16px;
+  font-weight:800;
+  color:#342b39;
+  border-color:var(--outline-deep);
+}
+.hero-actions .button:nth-child(1){background:#f4bfd4}
+.hero-actions .button:nth-child(2){background:#c9efdf}
+.hero-actions .button:nth-child(3){background:#c7eafd}
+.hero-actions .button:nth-child(1):hover{background:#f29fbe;color:#342b39}
+.hero-actions .button:nth-child(2):hover{background:#9fe3cd;color:#342b39}
+.hero-actions .button:nth-child(3):hover{background:#9edbf7;color:#342b39}
+
 @media(max-width:600px){
   .hero-copy::before{
-    inset:-30px -20px -28px -24px;
-    border-radius:38%;
-    background:radial-gradient(ellipse at 42% 45%,#fffefbf2 0%,#fffdf5d9 58%,#fffdf56b 76%,#fffdf500 92%);
-    filter:blur(6px);
+    inset:-20px -8px -20px -10px;
+    border-radius:42%;
+    background:radial-gradient(ellipse at 42% 45%,#fffefbf7 0%,#fffdf5e8 58%,#fffdf580 76%,#fffdf500 96%);
+    filter:blur(4px);
   }
+  .hero-actions .button{min-height:44px;padding:7px 15px;font-size:15px}
 }
