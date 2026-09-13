@@ -677,3 +677,33 @@ details[open] summary{border-bottom-color:var(--outline-deep)}
   .project .project-body{padding:19px 14px 20px}
   .project>details{margin:0 14px 14px}
 }
+
+/* Unified project reading rhythm: no divider between context and main work. */
+body{line-height:1.7}
+.about-copy,
+.education p,
+.direction p,
+.profile-item p,
+.project-description,
+.case-background p,
+.work-module h4,
+.work-module p,
+.fact-note,
+.retrospective p,
+.skills-grid p,
+.contact>p{line-height:1.7}
+.project .case-background{
+  padding:18px 0 12px;
+  border-bottom:0;
+}
+.project .project-body{padding:8px 22px 20px}
+.content-label{margin-bottom:14px}
+.work-list{gap:16px}
+.retrospective h4{margin-top:16px}
+
+@media(max-width:600px){
+  .project .case-background{padding:16px 0 10px}
+  .project .project-body{padding:7px 14px 18px}
+  .content-label{margin-bottom:12px}
+  .work-list{gap:15px}
+}
