@@ -19,7 +19,7 @@
 
 /* Lavender editorial theme: shared hierarchy and controls. */
 :root{--accent:#79578f;--accent-hover:#654477;--shadow:0 8px 26px #6042750b}
-body{position:relative;background:linear-gradient(#faf7fcce,#faf7fce8),url('./assets/lavender-garden.png') center/cover fixed}
+body{position:relative;background:linear-gradient(#faf7fcce,#faf7fce8),url('./assets/lavender-garden.webp') center/cover fixed}
 .container,.header-inner{width:min(1440px,calc(100% - 96px))}
 .site-header{background:#fffc;backdrop-filter:blur(14px);border-bottom:1px solid #dacde53d}
 .header-inner{height:104px}
@@ -28,7 +28,7 @@ nav{border:1px solid #d9cde2;border-radius:40px;padding:7px 15px;box-shadow:0 4p
 nav a{font-size:17px;padding:5px 20px;font-weight:600;border-radius:24px;transition:background .2s,color .2s,transform .2s}
 nav a:hover{color:var(--accent-hover);transform:translateY(-2px)}
 .hero{position:relative;isolation:isolate;display:block;min-height:calc(100svh - 104px);padding:100px 0 120px;align-content:center}
-.hero:before{content:"";position:absolute;z-index:-2;top:-104px;bottom:0;left:calc((100% - 100vw)/2);width:100vw;background:linear-gradient(90deg,#fffdf548 0%,#fffafb29 48%,#faf5ff1f 100%),url('./assets/lavender-garden.png') center/cover}
+.hero:before{content:"";position:absolute;z-index:-2;top:-104px;bottom:0;left:calc((100% - 100vw)/2);width:100vw;background:linear-gradient(90deg,#fffdf548 0%,#fffafb29 48%,#faf5ff1f 100%),url('./assets/lavender-garden.webp') center/cover}
 .hero-copy{position:relative;width:55%;z-index:2;padding-bottom:20px}
 .eyebrow{font-family:Georgia,serif;font-size:15px;letter-spacing:3px;margin-bottom:25px}
 .hero-greeting{font-family:HelloBrush,KaiTi,serif;font-size:clamp(46px,4.2vw,68px);margin-bottom:4px}
@@ -65,7 +65,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #79
 @media(prefers-reduced-motion:reduce){.scroll-link:hover span,nav a:hover{transform:none}}
 /* Final composition: full skirt remains separate from the profile card. */
 @media(min-width:951px){.hero-art{bottom:64px}.profile-item:first-of-type{padding-top:12px}}
-@media(max-width:600px){.hero{min-height:0;padding:42px 0 26px}.hero-visual{position:relative;inset:auto;height:655px;margin-top:18px}.hero-art{top:0;bottom:auto;right:2%;height:300px;width:58%}.profile-card{bottom:0;top:auto;background:#fff}.hero:before{background-image:linear-gradient(90deg,#fffdf547,#faf5ff24),url('./assets/lavender-garden.png')}}
+@media(max-width:600px){.hero{min-height:0;padding:42px 0 26px}.hero-visual{position:relative;inset:auto;height:655px;margin-top:18px}.hero-art{top:0;bottom:auto;right:2%;height:300px;width:58%}.profile-card{bottom:0;top:auto;background:#fff}.hero:before{background-image:linear-gradient(90deg,#fffdf547,#faf5ff24),url('./assets/lavender-garden.webp')}}
 
 /* Reference typography: Song-style editorial serif, no brush lettering. */
 @font-face{font-family:PortfolioSerif;src:url('./assets/portfolio-serif.woff2') format('woff2');font-weight:200 900;font-style:normal;font-display:swap}
