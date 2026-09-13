@@ -6,7 +6,7 @@
   <title>Leila · AI 产品作品集</title>
   <meta name="description" content="Leila 的个人求职主页：2027 届中国海洋大学硕士，求职 AI 产品经理实习。了解 Agent 工作流、LLM 评测与文献 AI 工作流三个可验证项目。">
   <meta name="theme-color" content="#eee5f3">
-  <link rel="stylesheet" href="./styles.css?v=20260910-8">
+  <link rel="stylesheet" href="./styles.css?v=20260913-1">
   <script src="./script.js" defer></script>
 </head>
 <body id="top">
@@ -53,9 +53,11 @@
         <header class="project-header">
           <div class="project-title-row"><span class="project-number">01</span><span class="project-tag">项目经历</span><h3 id="project-agent">面向大模型译文的审校决策 Agent</h3></div>
           <div class="project-meta"><span class="project-role">AI 产品设计与开发</span><span class="project-date">2026.08–2026.09</span></div>
-          <p class="project-description">面向营销、客服与界面文案的译后审校，设计质量决策层，依据质量判断与证据状态分流至自动通过、抽样复核或人工复核。</p>
-          <div class="project-links"><a class="button primary" href="https://curious-leila.github.io/llm-translation-review-decision-agent/" target="_blank" rel="noopener noreferrer">在线 Demo（首次加载可能较慢） ↗</a><a class="secondary-link" href="https://github.com/curious-leila/llm-translation-review-decision-agent" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></div>
         </header>
+        <div class="project-overview">
+          <p class="project-description">面向营销、客服与界面文案的译后审校，设计质量决策层，依据质量判断与证据状态分流至自动通过、抽样复核或人工复核。</p>
+          <div class="project-link-card"><div class="project-links"><a class="button primary" href="https://curious-leila.github.io/llm-translation-review-decision-agent/" target="_blank" rel="noopener noreferrer">在线 Demo（首次加载可能较慢） ↗</a><a class="secondary-link" href="https://github.com/curious-leila/llm-translation-review-decision-agent" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></div><p class="project-keywords">Vibe Coding / AI Agent / 译文审校场景 / Web Demo</p></div>
+        </div>
         <div class="case-background"><h4>背景</h4><p>营销、客服与界面文案需要译后审校：全量人工复核成本高，直接相信模型又可能在缺乏依据时错误放行。需要回答的是：<strong>哪些判断可以交给模型，哪些必须查证或升级人工？</strong></p></div>
         <div class="project-body"><h4 class="content-label">主要工作</h4><div class="work-list agent-modules">
           <div class="work-module"><h4>评测驱动分流策略</h4><p>基于前置 <strong>180 次人机双评</strong>构建“4 个质量维度 × 3 档内容风险”可靠性矩阵，识别“术语 × 高风险”人机一致率仅 <strong>61%</strong> 的低可靠性组合，并据此设计自动通过 / 抽样复核 / 人工复核三级分流策略，将模型评测结果转化为自动化权限。</p></div>
@@ -73,7 +75,8 @@
       </article>
 
       <article class="project" aria-labelledby="project-eval">
-        <header class="project-header"><div class="project-title-row"><span class="project-number">02</span><span class="project-tag">项目经历</span><h3 id="project-eval">大模型译文审校可靠性评测</h3></div><div class="project-meta"><span class="project-role">评测设计与产品策略</span><span class="project-date">2026.07–2026.08</span></div><p class="project-description">量化译文审校可靠性边界，为前述 Agent 分流策略提供评测依据。</p><div class="project-links"><a class="button primary" href="https://curious-leila.github.io/leila-evalboard/" target="_blank" rel="noopener noreferrer">评测看板 ↗</a><a class="secondary-link" href="https://github.com/curious-leila/leila-evalboard" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></div></header>
+        <header class="project-header"><div class="project-title-row"><span class="project-number">02</span><span class="project-tag">项目经历</span><h3 id="project-eval">大模型译文审校可靠性评测</h3></div><div class="project-meta"><span class="project-role">评测设计与产品策略</span><span class="project-date">2026.07–2026.08</span></div></header>
+        <div class="project-overview"><p class="project-description">量化译文审校可靠性边界，为前述 Agent 分流策略提供评测依据。</p><div class="project-link-card"><div class="project-links"><a class="button primary" href="https://curious-leila.github.io/leila-evalboard/" target="_blank" rel="noopener noreferrer">评测看板 ↗</a><a class="secondary-link" href="https://github.com/curious-leila/leila-evalboard" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></div><p class="project-keywords">大模型评测 / 人机双评 / 在线数据看板</p></div></div>
         <div class="case-background"><h4>背景</h4><p>整体评分表现好，不代表高风险场景可以自动放行。为了给后续 Agent 划定权限边界，先评测模型在<strong>不同质量维度与内容风险</strong>下的审校可靠性。</p></div>
         <div class="project-body"><h4 class="content-label">主要工作</h4><div class="work-list">
           <div class="work-module"><h4>评测框架与语料设计</h4><p>基于 MQM 定义术语、准确性、本地化、受众适配 <strong>4 个质量维度及四级严重度</strong>；构建营销 / 客服 / 界面文案 <strong>94 条可追溯双语语料</strong>，按误译后果标注高 / 中 / 低风险。</p></div>
@@ -85,7 +88,8 @@
       </article>
 
       <article class="project compact" aria-labelledby="project-literature">
-        <header class="project-header"><div class="project-title-row"><span class="project-number">03</span><span class="project-tag">项目经历</span><h3 id="project-literature">文献 AI 筛选与邮件简报工作流</h3></div><div class="project-meta"><span class="project-role">AI 工作流开发</span><span class="project-date">2026.05</span></div><p class="project-description">自动完成文献去重、分级与邮件推送，减少重复筛选与整理。</p><div class="project-links"><a class="button primary" href="https://curious-leila.github.io/literature-tracker/" target="_blank" rel="noopener noreferrer">在线证据页 ↗</a><a class="secondary-link" href="https://github.com/curious-leila/literature-tracker" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></div></header>
+        <header class="project-header"><div class="project-title-row"><span class="project-number">03</span><span class="project-tag">项目经历</span><h3 id="project-literature">文献 AI 筛选与邮件简报工作流</h3></div><div class="project-meta"><span class="project-role">AI 工作流开发</span><span class="project-date">2026.05</span></div></header>
+        <div class="project-overview"><p class="project-description">自动完成文献去重、分级与邮件推送，减少重复筛选与整理。</p><div class="project-link-card"><div class="project-links"><a class="button primary" href="https://curious-leila.github.io/literature-tracker/" target="_blank" rel="noopener noreferrer">在线证据页 ↗</a><a class="secondary-link" href="https://github.com/curious-leila/literature-tracker" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></div><p class="project-keywords">AI 工作流 / 文献推送</p></div></div>
         <div class="case-background"><h4>背景</h4><p>从自己的论文阅读流程出发，知网与 WOS 导出格式不同，跨关键词检索还会带来重复文献。希望把<strong>检索导出之后的去重、筛选和整理</strong>交给工作流，自己保留阅读与取舍。</p></div>
         <div class="project-body"><h4 class="content-label">主要工作</h4><div class="work-list">
           <div class="work-module"><h4>筛选工作流搭建</h4><p>实现知网 / WOS 双格式解析、SQLite 历史去重、Qwen 三级相关度分级与邮件推送；处理 <strong>5 份真实文件、161 条记录</strong>，去重后保留 <strong>159 篇文献及 156 个原文入口</strong>。</p></div>

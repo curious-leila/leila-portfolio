@@ -464,7 +464,7 @@ details[open] summary{border-bottom-color:var(--outline-deep)}
 /* Keep the three reading modules comfortable and consistent on wide screens. */
 #about,#projects,#skills{
   width:100%;
-  max-width:1050px;
+  max-width:1020px;
 }
 #contact{
   width:100%;
@@ -610,4 +610,70 @@ details[open] summary{border-bottom-color:var(--outline-deep)}
   }
   .profile-card{background:#fff}
   #contact .contact{width:100%}
+}
+
+/* Project cards: compact title bars and two-part link summaries. */
+.project,.project+.project,.project:last-child{
+  padding:0;
+  overflow:hidden;
+}
+.project-header{
+  padding:18px 22px 17px;
+  background:rgba(238,229,245,.58);
+  border:0;
+  border-bottom:2px solid var(--outline-deep);
+  border-radius:0;
+}
+.project-title-row h3{
+  flex-basis:auto;
+  margin-left:2px;
+}
+.project h3{
+  font-size:20px;
+  font-weight:800;
+  line-height:1.55;
+}
+.project-meta{margin-top:9px}
+.project-overview{padding:20px 22px 0}
+.project-description{margin-top:0}
+.project-link-card{
+  margin-top:18px;
+  overflow:hidden;
+  border:2px solid var(--outline-deep);
+  border-radius:13px;
+  background:rgba(238,229,245,.48);
+}
+.project-link-card .project-links{
+  gap:12px;
+  margin:0;
+  padding:15px 17px;
+}
+.project-keywords{
+  padding:9px 17px 10px;
+  border-top:2px solid var(--outline-deep);
+  background:linear-gradient(90deg,rgba(255,233,153,.62),rgba(201,239,223,.72));
+  color:#55485d;
+  font-size:14px;
+  font-weight:600;
+  line-height:1.65;
+}
+.project .case-background{
+  margin:0 22px;
+  padding:22px 0;
+}
+.project .project-body{padding:21px 22px 22px}
+.project>details{margin:0 22px 22px}
+
+@media(max-width:600px){
+  .project-header{padding:15px 14px 14px}
+  .project-title-row{gap:8px}
+  .project-title-row h3{flex-basis:100%;margin:2px 0 0}
+  .project h3{font-size:19px;line-height:1.5}
+  .project-overview{padding:17px 14px 0}
+  .project-link-card{margin-top:15px;border-radius:11px}
+  .project-link-card .project-links{gap:10px;padding:13px 12px}
+  .project-keywords{padding:9px 12px;font-size:13px}
+  .project .case-background{margin:0 14px;padding:20px 0}
+  .project .project-body{padding:19px 14px 20px}
+  .project>details{margin:0 14px 14px}
 }
