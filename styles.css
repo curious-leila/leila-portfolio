@@ -182,6 +182,7 @@ nav a{min-height:44px;padding:2px 17px;font-weight:700}
 .hero-actions .button{min-height:52px;font-size:17px}
 .scroll-link{font-size:16px}
 .profile-card{max-width:430px;padding:23px 26px}
+.profile-card>.profile-item:first-child{padding-top:0}
 .profile-item h2{font-size:20px}
 .profile-item p{font-size:15px;font-weight:600;color:#443d4c}
 .profile-item strong{font-weight:700}
