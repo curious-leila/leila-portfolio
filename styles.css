@@ -228,7 +228,7 @@ nav{box-shadow:3px 4px 0 #8a709a55}
 .hero-actions .button{box-shadow:3px 4px 0 #8a709a66}
 .hero-actions .button:hover{box-shadow:0 7px 18px #73508b24;transform:translateY(-3px)}
 .hero-actions .button:active{box-shadow:0 1px 0 #8a709a;transform:translateY(2px)}
-.section-heading h2{font-size:26px}
+.section-heading h2{font-size:25px;font-weight:800}
 
 .education-grid{
   grid-template-columns:1fr;
@@ -299,7 +299,7 @@ nav{box-shadow:3px 4px 0 #8a709a55}
 
 @media(max-width:600px){
   .menu-toggle{box-shadow:2px 3px 0 #8a709a55}
-  .section-heading h2{font-size:22px}
+  .section-heading h2{font-size:21px}
   .education{padding:19px 18px}
   .education+.education{padding-top:19px}
   .direction{grid-template-columns:1fr;gap:8px}
