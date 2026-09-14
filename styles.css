@@ -745,8 +745,9 @@ body{line-height:1.8}
 .retrospective-card h4{
   margin:0 0 8px;
   color:#75677d;
+  font-family:inherit;
   font-size:13px;
-  font-weight:700;
+  font-weight:800;
   line-height:1.6;
 }
 .retrospective-card p{font-size:16px;line-height:1.8;color:var(--body)}

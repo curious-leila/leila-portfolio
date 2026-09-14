@@ -7,7 +7,7 @@
   <meta name="description" content="Leila 的个人求职主页：2027 届中国海洋大学硕士，求职 AI 产品经理实习。了解 Agent 工作流、LLM 评测与文献 AI 工作流三个可验证项目。">
   <meta name="theme-color" content="#eee5f3">
   <link rel="preload" href="./assets/lavender-garden.webp" as="image" type="image/webp" fetchpriority="high">
-  <link rel="stylesheet" href="./styles.css?v=20260914-7">
+  <link rel="stylesheet" href="./styles.css?v=20260914-8">
   <script src="./script.js?v=20260914-1" defer></script>
 </head>
 <body id="top">
@@ -55,7 +55,7 @@
           <div class="project-meta"><span class="project-role">AI 产品设计与开发</span><span class="project-date">2026.08–2026.09</span></div>
         </header>
         <div class="project-overview">
-          <p class="project-description">设计并开发面向营销文案、客服话术与界面文案的译后审校 Agent 原型，结合质量评估与证据查证，实现三级审校分流，并支持查看决策依据与回放执行轨迹。</p>
+          <p class="project-description">设计并开发面向营销文案、客服话术与界面文案的译后审校 Agent 原型，结合前置评测结果、质量评估与证据查证，实现三级审校分流，并支持查看决策依据与回放执行轨迹。</p>
           <div class="project-link-card"><div class="project-links"><a class="button primary" href="https://curious-leila.github.io/llm-translation-review-decision-agent/" target="_blank" rel="noopener noreferrer">在线 Demo（首次加载可能较慢） ↗</a><a class="secondary-link" href="https://github.com/curious-leila/llm-translation-review-decision-agent" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></div><p class="project-keywords">Vibe Coding / AI Agent / 译文审校场景 / Web&nbsp;Demo</p></div>
         </div>
         <div class="case-background"><h4>背景</h4><p>全量人工审校成本高，直接依赖模型判断又存在漏判、误判风险。需要译文把关的团队普遍面临一个矛盾：复核成本与质量风险不可兼得。</p></div>
@@ -78,8 +78,8 @@
 
       <article class="project" aria-labelledby="project-eval">
         <header class="project-header"><div class="project-title-row"><span class="project-number">02</span><span class="project-tag">项目经历</span><h3 id="project-eval">大模型译文审校可靠性评测</h3></div><div class="project-meta"><span class="project-role">评测设计与产品策略</span><span class="project-date">2026.07–2026.08</span></div></header>
-        <div class="project-overview"><p class="project-description">设计并开展面向营销、客服与界面文案的大模型译文审校评测，基于 MQM 质量框架与人机双评，形成可靠性矩阵与分级人工介入规则，并通过在线看板展示评测结果与分歧案例。</p><div class="project-link-card"><div class="project-links"><a class="button primary" href="https://curious-leila.github.io/leila-evalboard/" target="_blank" rel="noopener noreferrer">评测看板 ↗</a><a class="secondary-link" href="https://github.com/curious-leila/leila-evalboard" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></div><p class="project-keywords">大模型评测 / 人机双评 / 在线数据看板</p></div></div>
-        <div class="case-background"><h4>背景</h4><p>内容团队引入大模型审校时，需要判断模型在哪些任务上可靠、哪些仍需人工把关。整体评分难以反映具体场景的误判风险，人机分歧也需要进一步核查依据。</p></div>
+        <div class="project-overview"><p class="project-description">基于 MQM 质量框架开展大模型译文审校可靠性评测，通过180组人机双评识别高风险术语判断的薄弱环节，形成可靠性矩阵与分歧复核记录，并通过在线看板展示评测发现。</p><div class="project-link-card"><div class="project-links"><a class="button primary" href="https://curious-leila.github.io/leila-evalboard/" target="_blank" rel="noopener noreferrer">评测看板 ↗</a><a class="secondary-link" href="https://github.com/curious-leila/leila-evalboard" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></div><p class="project-keywords">大模型评测 / 人机双评 / 在线数据看板</p></div></div>
+        <div class="case-background"><h4>背景</h4><p>承担译文审校的团队在将大模型用于营销文案、客服话术与界面文案的审校前，需要了解其在不同质量维度与内容风险下的表现。整体评分难以定位薄弱环节，人机判断出现分歧时，也缺少可直接用于确认错误与分析原因的依据。</p></div>
         <div class="project-body"><h4 class="content-label">主要工作</h4><ul class="work-list agent-work-list">
           <li>基于 MQM 翻译质量框架，定义术语、准确性、本地化与受众适配四个维度及评分标准；构建 94 条可追溯双语语料，按误译后果标注内容风险，选取 15 条开展试跑评测。</li>
           <li>采用生成与评审分离设计，对 GPT-4o、Claude、Gemini 三款模型生成的 45 份匿名译文开展人工与 Qwen 独立评分，形成 180 次人机双评；按质量维度与内容风险拆分结果，定位整体人机一致率 95% 下“术语 × 高风险”仅 61% 的薄弱组合。</li>
