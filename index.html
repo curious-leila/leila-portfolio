@@ -55,17 +55,17 @@
           <div class="project-meta"><span class="project-role">AI 产品设计与开发</span><span class="project-date">2026.08–2026.09</span></div>
         </header>
         <div class="project-overview">
-          <p class="project-description">面向营销、客服与界面文案的译后审校，设计质量决策层，依据质量判断与证据状态分流至自动通过、抽样复核或人工复核。</p>
+          <p class="project-description">设计并开发面向营销文案、客服话术与界面文案的译后审校 Agent 原型，结合质量评估与证据查证，实现三级审校分流，并支持查看决策依据与回放执行轨迹。</p>
           <div class="project-link-card"><div class="project-links"><a class="button primary" href="https://curious-leila.github.io/llm-translation-review-decision-agent/" target="_blank" rel="noopener noreferrer">在线 Demo（首次加载可能较慢） ↗</a><a class="secondary-link" href="https://github.com/curious-leila/llm-translation-review-decision-agent" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></div><p class="project-keywords">Vibe Coding / AI Agent / 译文审校场景 / Web&nbsp;Demo</p></div>
         </div>
-        <div class="case-background"><h4>背景</h4><p>营销、客服与界面文案需要译后审校：全量人工复核成本高，直接相信模型又可能在缺乏依据时错误放行。需要回答的是：<strong>哪些判断可以交给模型，哪些必须查证或升级人工？</strong></p></div>
-        <div class="project-body"><h4 class="content-label">主要工作</h4><div class="work-list agent-modules">
-          <div class="work-module"><h4>评测驱动分流策略</h4><p>基于前置 <strong>180 次人机双评</strong>构建“4 个质量维度 × 3 档内容风险”可靠性矩阵，识别“术语 × 高风险”人机一致率仅 <strong>61%</strong> 的低可靠性组合，并据此设计自动通过 / 抽样复核 / 人工复核三级分流策略，将模型评测结果转化为自动化权限。</p></div>
-          <div class="work-module"><h4>受控 Agent 工作流设计</h4><p>完成需求拆解、功能定义与 PRD，围绕质量判断、证据查证与分流决策搭建受控人机协同工作流；仅在术语判断依赖外部事实时启动 Agent，并拆分<strong>取证权、判断权与放行权</strong>，证据不足、冲突或模型异常时升级人工。</p></div>
-          <div class="work-module"><h4>Agent 运行机制迭代</h4><p>基于真实运行轨迹定位“证据已充分仍重复检索”的停止权归属问题，将确定性停止权从模型收回规则层，同一历史案例工具调用由 <strong>4 次降至 1 次</strong>；进一步增加原文术语校验与术语锚定检索，降低自由文本 Query 导致的查证偏移。</p></div>
-          <div class="work-module"><h4>Demo 产品化与决策可视化</h4><p>设计真实提交与 <strong>4 类案例回放</strong>两种演示路径，将最终分流结果前置，并可视化案例风险、四维质量判断、证据状态、Agent 决策轨迹与分流依据；完成前后端联调与部署，支持通过公开链接在线体验。</p></div>
-        </div></div>
-        <details><summary><span class="when-closed">查看产品复盘</span><span class="when-open">收起产品复盘</span><span class="disclosure-symbol" aria-hidden="true">▼</span></summary><div class="retrospective">
+        <div class="case-background"><h4>背景</h4><p>全量人工审校成本高，直接依赖模型判断又存在漏判、误判风险。本项目面向人工复核资源有限的内容团队，结合质量风险与证据状态，将译文分配至自动通过、抽样复核或人工复核路径。</p></div>
+        <div class="project-body"><h4 class="content-label">主要工作</h4><ul class="work-list agent-work-list">
+          <li>围绕营销、客服与界面文案的译后审校需求，完成需求拆解、功能定义与 PRD 撰写，梳理从案例提交、质量判断、按需查证到分流处理的审校流程，明确输入信息、处理规则与结果展示内容。</li>
+          <li>基于前置人机双评结果，制定自动通过、抽样复核与人工复核三级策略，明确不同内容风险与质量问题下的处理方式，形成可执行的人工介入规则。</li>
+          <li>搭建 Agent 证据查证流程，拆分取证权、判断权与放行权，明确查证触发条件、证据检查标准与工具调用上限；支持获取证据后重新评估术语，完善证据充分时停止检索、证据不足或异常时转人工的处理流程。</li>
+          <li>设计案例提交、结果展示与回放交互，前置分流结论与依据，展示证据来源和 Agent 执行轨迹；完成前后端联调、模型 API 接入与部署，支持真实案例回放，实现公开链接访问与 Agent 在线交互的完整闭环。</li>
+        </ul></div>
+        <details><summary><span class="when-closed">查看产品决策与复盘</span><span class="when-open">收起产品决策与复盘</span><span class="disclosure-symbol" aria-hidden="true">▼</span></summary><div class="retrospective">
           <h4>只在需要外部事实的地方使用 Agent</h4><p>不是每个质量问题都需要检索。对于术语是否符合官方规范这类无法仅靠文本判断的问题，才启动查证；其余判断沿既定流程完成，让额外成本对应明确的证据需求。</p>
           <h4>找到资料，不等于可以放行</h4><p>查证器负责找证据，独立判断环节根据合格证据复评，最终分流由可靠性策略决定。取证、判断与放行分开，避免模型用自己的检索结果直接为自己背书；证据不足或冲突时交给人工。</p>
           <h4>4 次 → 1 次：先明确谁有权停止</h4><p>同一历史案例在证据已充分后仍继续检索，暴露的是停止权归属问题。将充分条件交给规则层后，满足条件就停止。这个案例证明机制可以收敛，不代表所有场景的平均提效。</p>
