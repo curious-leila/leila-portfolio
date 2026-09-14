@@ -847,6 +847,9 @@ body{line-height:1.8}
   line-height:1.6;
 }
 
+/* Keep the degree label intact when the education line wraps on narrow screens. */
+.education-program span{white-space:nowrap}
+
 @media(max-width:600px){
   .project .case-background{padding:16px 0 10px}
   .project .project-body{padding:7px 14px 18px}
