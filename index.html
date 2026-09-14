@@ -101,18 +101,18 @@
 
       <article class="project compact" aria-labelledby="project-literature">
         <header class="project-header"><div class="project-title-row"><span class="project-number">03</span><span class="project-tag">项目经历</span><h3 id="project-literature">文献 AI 筛选与邮件简报工作流</h3></div><div class="project-meta"><span class="project-role">AI 工作流开发</span><span class="project-date">2026.05</span></div></header>
-        <div class="project-overview"><p class="project-description">自动完成文献去重、分级与邮件推送，减少重复筛选与整理。</p><div class="project-link-card"><div class="project-links"><a class="button primary" href="https://curious-leila.github.io/literature-tracker/" target="_blank" rel="noopener noreferrer">在线证据页 ↗</a><a class="secondary-link" href="https://github.com/curious-leila/literature-tracker" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></div><p class="project-keywords">AI 工作流 / 文献推送</p></div></div>
-        <div class="case-background"><h4>背景</h4><p>从自己的论文阅读流程出发，知网与 WOS 导出格式不同，跨关键词检索还会带来重复文献。希望把<strong>检索导出之后的去重、筛选和整理</strong>交给工作流，自己保留阅读与取舍。</p></div>
-        <div class="project-body"><h4 class="content-label">主要工作</h4><div class="work-list">
-          <div class="work-module"><h4>筛选工作流搭建</h4><p>实现知网 / WOS 双格式解析、SQLite 历史去重、Qwen 三级相关度分级与邮件推送；处理 <strong>5 份真实文件、161 条记录</strong>，去重后保留 <strong>159 篇文献及 156 个原文入口</strong>。</p></div>
-          <div class="work-module"><h4>Prompt 调优</h4><p>完成 <strong>8 轮 Prompt 与模型迭代</strong>，解决<strong>批量输出解析失败与分类边界不清</strong>问题，实现 <strong>159 / 159 条模型结构化结果成功解析</strong>。</p></div>
-        </div><p class="fact-note">口径说明：159 / 159 指结构化结果成功解析，不是分类准确率。</p></div>
+        <div class="project-overview"><p class="project-description">搭建面向知网 / WOS 导出文件的文献筛选工作流，通过历史去重与 Qwen 相关度判断完成文献分级，并推送包含判定理由、阅读建议与原文入口的邮件简报。</p><div class="project-link-card"><div class="project-links"><a class="button primary" href="https://curious-leila.github.io/literature-tracker/" target="_blank" rel="noopener noreferrer">在线证据页 ↗</a><a class="secondary-link" href="https://github.com/curious-leila/literature-tracker" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></div><p class="project-keywords">AI 工作流 / 文献筛选 / 邮件简报</p></div></div>
+        <div class="case-background"><h4>背景</h4><p>准备毕业论文时，需要持续跟踪特定研究主题；知网与 WOS 导出格式不同，跨关键词、跨批次检索还会产生重复记录，每次检索后都要重新合并、去重并判断阅读价值。</p></div>
+        <div class="project-body"><h4 class="content-label">主要工作</h4><ul class="work-list agent-work-list">
+          <li>梳理“文件导入—历史去重—相关度判断—简报生成—邮件推送”流程，实现知网 / WOS 双格式解析、SQLite 历史去重与 Qwen 三级分级；将高 / 中 / 低结果分别对应优先阅读全文、摘要审阅和背景参考。</li>
+          <li>完成 8 轮 Prompt 与模型迭代，将批量输出由不稳定的 JSON 调整为管道分隔格式，并补充入选与排除条件；处理 5 份真实文件、161 条记录，去重后保留 159 篇文献及 156 个原文入口，实现 159 / 159 条结构化结果成功解析。</li>
+        </ul></div>
         <div class="review-disclosure">
           <button class="review-toggle" type="button" aria-expanded="false" aria-controls="review-literature"><span class="when-closed">查看产品决策与复盘</span><span class="when-open">收起产品决策与复盘</span><span class="disclosure-symbol" aria-hidden="true">▼</span></button>
           <div class="retrospective-expand" id="review-literature" aria-hidden="true"><div class="retrospective-expand-inner"><div class="retrospective">
-            <section class="retrospective-card retrospective-card-empty"><h4>核心产品决策</h4></section>
-            <section class="retrospective-card retrospective-card-empty"><h4>方案设计与取舍</h4></section>
-            <section class="retrospective-card retrospective-card-empty"><h4>验证结果与后续迭代</h4></section>
+            <section class="retrospective-card"><h4>核心产品决策</h4><p>将自动化范围限定在检索导出之后：检索策略与数据库权限由用户掌握，工作流接手解析、去重、分级与推送，最终阅读和取舍仍由用户完成。</p></section>
+            <section class="retrospective-card"><h4>方案设计与取舍</h4><p>关键词命中不能直接代表文献值得阅读，因此让模型结合研究对象与理论框架判断相关度并说明理由，再将三级结果对应到不同阅读动作。批量输出早期采用 JSON 但解析不稳定，后改为管道分隔格式，优先保证工作流稳定产出。</p></section>
+            <section class="retrospective-card"><h4>验证结果与后续迭代</h4><p>使用 5 份真实文件验证完整流程：161 条记录去重后保留 159 篇，其中 156 篇保留原文入口，159 / 159 条模型结构化结果成功解析。当前仅验证流程可运行、结果可解析，尚无独立人工金标，不能说明分类准确率；后续可补充人工标注与使用反馈，开展分类准确率等数据验证。</p></section>
           </div></div></div>
         </div>
       </article></div>
