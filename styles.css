@@ -705,7 +705,7 @@ body{line-height:1.8}
 }
 .project .project-body{padding:8px 22px 20px}
 .content-label{margin-bottom:14px}
-.work-list{gap:16px}
+.work-list{gap:0}
 .agent-work-list{list-style:disc inside;padding:0;margin:0}
 .agent-work-list li{font-size:16px;line-height:1.8;color:var(--body)}
 .retrospective h4{margin-top:16px}
@@ -714,5 +714,5 @@ body{line-height:1.8}
   .project .case-background{padding:16px 0 10px}
   .project .project-body{padding:7px 14px 18px}
   .content-label{margin-bottom:12px}
-  .work-list{gap:15px}
+  .work-list{gap:0}
 }
