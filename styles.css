@@ -658,7 +658,7 @@ details[open] summary{border-bottom-color:var(--outline-deep)}
 .project-keywords{
   padding:9px 17px 10px;
   border-top:2px solid var(--outline-deep);
-  background:linear-gradient(90deg,rgba(255,233,153,.62),rgba(201,239,223,.72));
+  background:#fff1c0;
   color:#675d6c;
   font-size:14px;
   font-weight:400;
@@ -753,6 +753,39 @@ body{line-height:1.8}
 }
 .retrospective-card p{font-size:16px;line-height:1.8;color:var(--body)}
 .retrospective-card-empty h4{margin-bottom:0}
+
+/* Capability cards: concise, scannable lists without decorative numbering. */
+.skills-grid h3{
+  padding:14px 20px;
+  margin:0 -22px 15px;
+}
+.skill-list{
+  display:grid;
+  gap:8px;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.skill-list li{
+  position:relative;
+  margin:0;
+  padding-left:20px;
+  color:var(--body);
+  font-size:16px;
+  line-height:1.8;
+}
+.skill-list li::before{
+  content:"";
+  position:absolute;
+  left:1px;
+  top:.9em;
+  width:7px;
+  height:7px;
+  background:#f6c4d8;
+  border:1px solid var(--outline-deep);
+  border-radius:2px;
+  transform:translateY(-50%);
+}
 
 @media(max-width:600px){
   .project .case-background{padding:16px 0 10px}
