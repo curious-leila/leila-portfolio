@@ -708,11 +708,29 @@ body{line-height:1.8}
 .work-list{gap:0}
 .agent-work-list{list-style:disc outside;padding-inline-start:1.35em;margin:0}
 .agent-work-list li{font-size:16px;line-height:1.8;color:var(--body)}
-.retrospective h4{margin-top:16px}
+.case-background h4,.content-label{font-size:14px}
+.retrospective{display:grid;gap:16px;padding:18px 20px 20px}
+.retrospective-card{
+  padding:16px 18px;
+  background:#fdfbfe;
+  border:1.5px solid #8c7398;
+  border-radius:10px;
+}
+.retrospective-card h4{
+  margin:0 0 8px;
+  color:#75677d;
+  font-size:14px;
+  font-weight:650;
+  line-height:1.6;
+}
+.retrospective-card p{font-size:16px;line-height:1.8;color:var(--body)}
+.retrospective-card-empty h4{margin-bottom:0}
 
 @media(max-width:600px){
   .project .case-background{padding:16px 0 10px}
   .project .project-body{padding:7px 14px 18px}
   .content-label{margin-bottom:12px}
   .work-list{gap:0}
+  .retrospective{gap:13px;padding:14px}
+  .retrospective-card{padding:14px}
 }
