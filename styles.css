@@ -745,10 +745,11 @@ body{line-height:1.8}
 .retrospective-card h4{
   margin:0 0 8px;
   color:#75677d;
-  font-family:inherit;
+  font-family:"Nunito","Noto Sans SC",system-ui,sans-serif;
   font-size:13px;
-  font-weight:800;
+  font-weight:700;
   line-height:1.6;
+  letter-spacing:.04em;
 }
 .retrospective-card p{font-size:16px;line-height:1.8;color:var(--body)}
 .retrospective-card-empty h4{margin-bottom:0}
