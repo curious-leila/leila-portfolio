@@ -720,7 +720,7 @@ body{line-height:1.8}
   padding:10px 16px;
   color:#283b48;
   background:#bfe8fb;
-  border:1.5px solid #735d7d;
+  border:2px solid #735d7d;
   border-radius:12px;
   box-shadow:3px 4px 0 #78638266;
   font-size:16px;
@@ -729,7 +729,6 @@ body{line-height:1.8}
 }
 .review-toggle:hover{color:#172f3d;background:#9fdbf7;transform:translateY(-2px)}
 .review-toggle:active{background:#8ecfee;transform:translateY(1px);box-shadow:1px 2px 0 #78638266}
-.review-toggle[aria-expanded="true"]{background:#e1d6f4;color:#30253a}
 .review-toggle[aria-expanded="true"] .when-closed{display:none}
 .review-toggle[aria-expanded="true"] .when-open{display:inline}
 .review-toggle[aria-expanded="true"] .disclosure-symbol{transform:rotate(180deg)}
@@ -740,14 +739,14 @@ body{line-height:1.8}
 .retrospective-card{
   padding:16px 18px;
   background:#fdfbfe;
-  border:1.5px solid #8c7398;
+  border:1.5px solid var(--accent-hover);
   border-radius:10px;
 }
 .retrospective-card h4{
   margin:0 0 8px;
   color:#75677d;
-  font-size:14px;
-  font-weight:650;
+  font-size:13px;
+  font-weight:500;
   line-height:1.6;
 }
 .retrospective-card p{font-size:16px;line-height:1.8;color:var(--body)}

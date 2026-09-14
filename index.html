@@ -7,7 +7,7 @@
   <meta name="description" content="Leila 的个人求职主页：2027 届中国海洋大学硕士，求职 AI 产品经理实习。了解 Agent 工作流、LLM 评测与文献 AI 工作流三个可验证项目。">
   <meta name="theme-color" content="#eee5f3">
   <link rel="preload" href="./assets/lavender-garden.webp" as="image" type="image/webp" fetchpriority="high">
-  <link rel="stylesheet" href="./styles.css?v=20260914-5">
+  <link rel="stylesheet" href="./styles.css?v=20260914-6">
   <script src="./script.js?v=20260914-1" defer></script>
 </head>
 <body id="top">
@@ -78,20 +78,20 @@
 
       <article class="project" aria-labelledby="project-eval">
         <header class="project-header"><div class="project-title-row"><span class="project-number">02</span><span class="project-tag">项目经历</span><h3 id="project-eval">大模型译文审校可靠性评测</h3></div><div class="project-meta"><span class="project-role">评测设计与产品策略</span><span class="project-date">2026.07–2026.08</span></div></header>
-        <div class="project-overview"><p class="project-description">量化译文审校可靠性边界，为前述 Agent 分流策略提供评测依据。</p><div class="project-link-card"><div class="project-links"><a class="button primary" href="https://curious-leila.github.io/leila-evalboard/" target="_blank" rel="noopener noreferrer">评测看板 ↗</a><a class="secondary-link" href="https://github.com/curious-leila/leila-evalboard" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></div><p class="project-keywords">大模型评测 / 人机双评 / 在线数据看板</p></div></div>
-        <div class="case-background"><h4>背景</h4><p>整体评分表现好，不代表高风险场景可以自动放行。为了给后续 Agent 划定权限边界，先评测模型在<strong>不同质量维度与内容风险</strong>下的审校可靠性。</p></div>
-        <div class="project-body"><h4 class="content-label">主要工作</h4><div class="work-list">
-          <div class="work-module"><h4>评测框架与语料设计</h4><p>基于 MQM 定义术语、准确性、本地化、受众适配 <strong>4 个质量维度及四级严重度</strong>；构建营销 / 客服 / 界面文案 <strong>94 条可追溯双语语料</strong>，按误译后果标注高 / 中 / 低风险。</p></div>
-          <div class="work-module"><h4>人机双评与可靠性定位</h4><p>采用<strong>生成与评审分离</strong>设计，由 GPT-4o、Claude、Gemini 生成 <strong>45 份匿名译文</strong>，Qwen 与人工按统一标准独立评分，形成 <strong>180 次人机双评</strong>；整体一致率 <strong>95%（Gwet's AC1 = 0.947）</strong>，按“4 维度 × 3 风险”拆分后定位“术语 × 高风险”一致率仅 <strong>11/18（61%）</strong>，为唯一低于 90% 的组合。</p></div>
-          <div class="work-module"><h4>Bad Case 复核与问题归因</h4><p>逐条复核人机分歧，通过外部证据纠正 <strong>6 次 AI 无据术语判断</strong>，AI 反向发现人工漏检 <strong>3 处</strong>；据此发现高风险术语判断易以内部知识替代外部事实依据，推动 Agent 引入<strong>外部证据查证与证据门控</strong>。</p></div>
-          <div class="work-module"><h4>评测结果转化为产品策略</h4><p>将 <strong>12 格可靠性结果</strong>映射为人工介入规则，离线推演人工复核量约为 <strong>28/180（15.5%）</strong>；提炼高风险术语证据约束，支撑 Agent 三级分流与自动化权限设计。</p></div>
-        </div><p class="fact-note">口径说明：15.5% 是离线策略推演，不是线上业务收益。</p></div>
+        <div class="project-overview"><p class="project-description">设计并开展面向营销、客服与界面文案的大模型译文审校评测，基于 MQM 质量框架与人机双评，形成可靠性矩阵与分级人工介入规则，并通过在线看板展示评测结果与分歧案例。</p><div class="project-link-card"><div class="project-links"><a class="button primary" href="https://curious-leila.github.io/leila-evalboard/" target="_blank" rel="noopener noreferrer">评测看板 ↗</a><a class="secondary-link" href="https://github.com/curious-leila/leila-evalboard" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></div><p class="project-keywords">大模型评测 / 人机双评 / 在线数据看板</p></div></div>
+        <div class="case-background"><h4>背景</h4><p>内容团队引入大模型审校时，需要判断模型在哪些任务上可靠、哪些仍需人工把关。整体评分难以反映具体场景的误判风险，人机分歧也需要进一步核查依据。</p></div>
+        <div class="project-body"><h4 class="content-label">主要工作</h4><ul class="work-list agent-work-list">
+          <li>基于 MQM 翻译质量框架，定义术语、准确性、本地化与受众适配四个维度及评分标准；构建 94 条可追溯双语语料，按误译后果标注内容风险，选取 15 条开展试跑评测。</li>
+          <li>采用生成与评审分离设计，对 GPT-4o、Claude、Gemini 三款模型生成的 45 份匿名译文开展人工与 Qwen 独立评分，形成 180 次人机双评；按质量维度与内容风险拆分结果，定位整体人机一致率 95% 下“术语 × 高风险”仅 61% 的薄弱组合。</li>
+          <li>逐条复核人机分歧，结合外部资料核查术语用法，确认 6 次 AI 无据术语判断与 3 次人工漏检，记录判断依据与评分修订，提炼后续 Agent 的证据查证需求。</li>
+          <li>将评测结果映射为分级人工介入规则，推演不同规则下的复核量；搭建在线评测看板，支持公开访问链接，集中展示可靠性矩阵、分歧案例与策略依据，数据方法和原始评分记录公开可查看。</li>
+        </ul></div>
         <div class="review-disclosure">
           <button class="review-toggle" type="button" aria-expanded="false" aria-controls="review-eval"><span class="when-closed">查看产品决策与复盘</span><span class="when-open">收起产品决策与复盘</span><span class="disclosure-symbol" aria-hidden="true">▼</span></button>
           <div class="retrospective-expand" id="review-eval" aria-hidden="true"><div class="retrospective-expand-inner"><div class="retrospective">
-            <section class="retrospective-card retrospective-card-empty"><h4>核心产品决策</h4></section>
-            <section class="retrospective-card retrospective-card-empty"><h4>方案设计与取舍</h4></section>
-            <section class="retrospective-card retrospective-card-empty"><h4>验证结果与后续迭代</h4></section>
+            <section class="retrospective-card"><h4>核心产品决策</h4><p>根据模型在不同质量维度与内容风险下的审校表现，确定哪些判断需要人工复核。将评测结果按“质量维度 × 内容风险”拆分，单独识别“高风险术语”薄弱组合，为强制人工核验、抽样复核等规则提供依据；对样本内完全一致的组合仍保留抽检，避免将小样本结果直接视为零风险。</p></section>
+            <section class="retrospective-card"><h4>方案设计与取舍</h4><p>分别定义风险等级与错误严重度：前者衡量具体场景下误译的业务代价，后者评价译文中的实际问题，避免混用两种标准。生成模型与评分模型分离，人工与模型按统一标准独立评分；对分歧引入外部证据复核，同时检查模型误判与人工漏检，保留评分修订依据。</p></section>
+            <section class="retrospective-card"><h4>验证结果与后续迭代</h4><p>分歧复核发现，部分术语判断缺少充分的外部依据，推动后续 Agent 引入证据查证。按试跑规则离线推演，人工介入量约为 28/180（15.5%），该比例按维度判断次数计算，不代表线上案例复核率或业务收益。当前结果来自英文到简体中文的 15 条试跑语料、45 份候选译文及 180 组人机配对评分，各组合样本有限。后续可扩充高风险与分歧样本，引入多名人工评审及独立验证集，开展分层一致率、误判情况与人工复核量的数据验证。</p></section>
           </div></div></div>
         </div>
       </article>
