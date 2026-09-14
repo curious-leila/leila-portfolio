@@ -788,7 +788,8 @@ body{line-height:1.8}
 }
 
 /* Project header typography follows the reference hierarchy. */
-.project-role{
+.project-role,
+.project-date{
   color:#7c6c84;
   font-family:"Nunito","Noto Sans SC",system-ui,sans-serif;
   font-weight:500;
@@ -809,6 +810,41 @@ body{line-height:1.8}
   background:#fff1c0;
   color:#664b79;
   font-variant-numeric:tabular-nums;
+}
+
+/* Let each capability card end with its own content instead of stretching to its row mate. */
+.skills-grid{align-items:start}
+
+/* Contact details use the same reading style as the page body. */
+#contact .contact{padding:22px 26px}
+#contact .contact-copy{
+  color:var(--body);
+  font-family:inherit;
+  font-size:16px;
+  font-weight:400;
+  line-height:1.8;
+}
+#contact .contact-actions{
+  gap:12px;
+  margin-top:14px;
+}
+#contact .email,
+#contact .email:hover{
+  min-height:44px;
+  padding:6px 14px;
+  color:var(--body);
+  font-family:inherit;
+  font-size:16px;
+  font-weight:400;
+  line-height:1.8;
+}
+#contact .email svg{width:20px;height:20px}
+#contact .copy-button{min-width:144px}
+#contact .copy-status{
+  min-height:23px;
+  margin-top:4px;
+  font-size:14px;
+  line-height:1.6;
 }
 
 @media(max-width:600px){
