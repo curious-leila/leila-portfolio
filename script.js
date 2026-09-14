@@ -46,6 +46,17 @@ copyButton.addEventListener('click', async () => {
   }
 });
 
+// Product reviews use the same quick vertical reveal pattern as the reference site.
+document.querySelectorAll('.review-toggle').forEach((toggle) => {
+  const panel = document.getElementById(toggle.getAttribute('aria-controls'));
+  if (!panel) return;
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.setAttribute('aria-expanded', String(open));
+    panel.setAttribute('aria-hidden', String(!open));
+  });
+});
+
 // Keep navigation state aligned with the section currently being read.
 if ('IntersectionObserver' in window) {
   const navigationLinks = [...document.querySelectorAll('nav a')];

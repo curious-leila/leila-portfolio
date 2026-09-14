@@ -7,8 +7,8 @@
   <meta name="description" content="Leila 的个人求职主页：2027 届中国海洋大学硕士，求职 AI 产品经理实习。了解 Agent 工作流、LLM 评测与文献 AI 工作流三个可验证项目。">
   <meta name="theme-color" content="#eee5f3">
   <link rel="preload" href="./assets/lavender-garden.webp" as="image" type="image/webp" fetchpriority="high">
-  <link rel="stylesheet" href="./styles.css?v=20260914-4">
-  <script src="./script.js" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20260914-5">
+  <script src="./script.js?v=20260914-1" defer></script>
 </head>
 <body id="top">
   <a class="skip-link" href="#main">跳转至正文</a>
@@ -66,11 +66,14 @@
           <li>基于真实运行轨迹定位证据重复检索问题，将确定性停止权从模型收回规则层，同一历史案例工具调用由4次降至1次；进一步增加原文术语校验与术语锚定检索，降低自由文本Query导致的查证偏移。</li>
           <li>设计案例提交、结果展示与回放交互，前置分流结论与依据，展示证据来源和 Agent 执行轨迹；完成前后端联调、模型 API 接入与部署，支持真实案例回放，实现公开链接访问与 Agent 在线交互的完整闭环。</li>
         </ul></div>
-        <details><summary><span class="when-closed">查看产品决策与复盘</span><span class="when-open">收起产品决策与复盘</span><span class="disclosure-symbol" aria-hidden="true">▼</span></summary><div class="retrospective">
-          <section class="retrospective-card"><h4>核心产品决策</h4><p>根据模型在不同任务上的可靠程度，决定哪些审校结果可以直接采纳，哪些需要查证或人工确认。前置评测发现，高风险术语判断存在明显分歧，因此结合内容风险与评测结果制定分流规则，并对依赖官方用法的术语增加证据查证，使审校结果的处理有据可依。</p></section>
-          <section class="retrospective-card"><h4>方案设计与取舍</h4><p>将自主查证限定在需要外部事实的术语问题上，其余环节采用单次模型判断或规则处理，减少不必要的工具调用。拆分取证权、判断权与放行权，要求检索结果先通过来源与适用范围检查，再用于术语复评，最终由规则决定分流，避免模型自行取证、自行放行。MVP 采用受控的官方来源资料，优先验证证据如何影响判断，暂不扩展开放网络检索。</p></section>
-          <section class="retrospective-card"><h4>验证结果与后续迭代</h4><p>通过真实案例回放，验证了证据充分后复评通过、证据不足后转人工、无需查证等路径。运行中发现，Agent 已获取充分证据却继续检索，最终耗尽预算。据此将停止判断权交给规则，同一案例工具调用由 4 次降至 1 次，并完成后续复评与分流。当前为基于小规模官方来源证据包的英文到简体中文审校原型，已完成案例验证，尚未开展真实用户测试。后续可扩充证据覆盖、引入人工复核反馈，关注安全自动放行率、错误自动放行率、人工复核率与单案例处理时长的数据验证。</p></section>
-        </div></details>
+        <div class="review-disclosure">
+          <button class="review-toggle" type="button" aria-expanded="false" aria-controls="review-agent"><span class="when-closed">查看产品决策与复盘</span><span class="when-open">收起产品决策与复盘</span><span class="disclosure-symbol" aria-hidden="true">▼</span></button>
+          <div class="retrospective-expand" id="review-agent" aria-hidden="true"><div class="retrospective-expand-inner"><div class="retrospective">
+            <section class="retrospective-card"><h4>核心产品决策</h4><p>根据模型在不同任务上的可靠程度，决定哪些审校结果可以直接采纳，哪些需要查证或人工确认。前置评测发现，高风险术语判断存在明显分歧，因此结合内容风险与评测结果制定分流规则，并对依赖官方用法的术语增加证据查证，使审校结果的处理有据可依。</p></section>
+            <section class="retrospective-card"><h4>方案设计与取舍</h4><p>将自主查证限定在需要外部事实的术语问题上，其余环节采用单次模型判断或规则处理，减少不必要的工具调用。拆分取证权、判断权与放行权，要求检索结果先通过来源与适用范围检查，再用于术语复评，最终由规则决定分流，避免模型自行取证、自行放行。MVP 采用受控的官方来源资料，优先验证证据如何影响判断，暂不扩展开放网络检索。</p></section>
+            <section class="retrospective-card"><h4>验证结果与后续迭代</h4><p>通过真实案例回放，验证了证据充分后复评通过、证据不足后转人工、无需查证等路径。运行中发现，Agent 已获取充分证据却继续检索，最终耗尽预算。据此将停止判断权交给规则，同一案例工具调用由 4 次降至 1 次，并完成后续复评与分流。当前为基于小规模官方来源证据包的英文到简体中文审校原型，已完成案例验证，尚未开展真实用户测试。后续可扩充证据覆盖、引入人工复核反馈，关注安全自动放行率、错误自动放行率、人工复核率与单案例处理时长的数据验证。</p></section>
+          </div></div></div>
+        </div>
       </article>
 
       <article class="project" aria-labelledby="project-eval">
@@ -83,11 +86,14 @@
           <div class="work-module"><h4>Bad Case 复核与问题归因</h4><p>逐条复核人机分歧，通过外部证据纠正 <strong>6 次 AI 无据术语判断</strong>，AI 反向发现人工漏检 <strong>3 处</strong>；据此发现高风险术语判断易以内部知识替代外部事实依据，推动 Agent 引入<strong>外部证据查证与证据门控</strong>。</p></div>
           <div class="work-module"><h4>评测结果转化为产品策略</h4><p>将 <strong>12 格可靠性结果</strong>映射为人工介入规则，离线推演人工复核量约为 <strong>28/180（15.5%）</strong>；提炼高风险术语证据约束，支撑 Agent 三级分流与自动化权限设计。</p></div>
         </div><p class="fact-note">口径说明：15.5% 是离线策略推演，不是线上业务收益。</p></div>
-        <details><summary><span class="when-closed">查看产品决策与复盘</span><span class="when-open">收起产品决策与复盘</span><span class="disclosure-symbol" aria-hidden="true">▼</span></summary><div class="retrospective">
-          <section class="retrospective-card retrospective-card-empty"><h4>核心产品决策</h4></section>
-          <section class="retrospective-card retrospective-card-empty"><h4>方案设计与取舍</h4></section>
-          <section class="retrospective-card retrospective-card-empty"><h4>验证结果与后续迭代</h4></section>
-        </div></details>
+        <div class="review-disclosure">
+          <button class="review-toggle" type="button" aria-expanded="false" aria-controls="review-eval"><span class="when-closed">查看产品决策与复盘</span><span class="when-open">收起产品决策与复盘</span><span class="disclosure-symbol" aria-hidden="true">▼</span></button>
+          <div class="retrospective-expand" id="review-eval" aria-hidden="true"><div class="retrospective-expand-inner"><div class="retrospective">
+            <section class="retrospective-card retrospective-card-empty"><h4>核心产品决策</h4></section>
+            <section class="retrospective-card retrospective-card-empty"><h4>方案设计与取舍</h4></section>
+            <section class="retrospective-card retrospective-card-empty"><h4>验证结果与后续迭代</h4></section>
+          </div></div></div>
+        </div>
       </article>
 
       <article class="project compact" aria-labelledby="project-literature">
@@ -98,11 +104,14 @@
           <div class="work-module"><h4>筛选工作流搭建</h4><p>实现知网 / WOS 双格式解析、SQLite 历史去重、Qwen 三级相关度分级与邮件推送；处理 <strong>5 份真实文件、161 条记录</strong>，去重后保留 <strong>159 篇文献及 156 个原文入口</strong>。</p></div>
           <div class="work-module"><h4>Prompt 调优</h4><p>完成 <strong>8 轮 Prompt 与模型迭代</strong>，解决<strong>批量输出解析失败与分类边界不清</strong>问题，实现 <strong>159 / 159 条模型结构化结果成功解析</strong>。</p></div>
         </div><p class="fact-note">口径说明：159 / 159 指结构化结果成功解析，不是分类准确率。</p></div>
-        <details><summary><span class="when-closed">查看产品决策与复盘</span><span class="when-open">收起产品决策与复盘</span><span class="disclosure-symbol" aria-hidden="true">▼</span></summary><div class="retrospective">
-          <section class="retrospective-card retrospective-card-empty"><h4>核心产品决策</h4></section>
-          <section class="retrospective-card retrospective-card-empty"><h4>方案设计与取舍</h4></section>
-          <section class="retrospective-card retrospective-card-empty"><h4>验证结果与后续迭代</h4></section>
-        </div></details>
+        <div class="review-disclosure">
+          <button class="review-toggle" type="button" aria-expanded="false" aria-controls="review-literature"><span class="when-closed">查看产品决策与复盘</span><span class="when-open">收起产品决策与复盘</span><span class="disclosure-symbol" aria-hidden="true">▼</span></button>
+          <div class="retrospective-expand" id="review-literature" aria-hidden="true"><div class="retrospective-expand-inner"><div class="retrospective">
+            <section class="retrospective-card retrospective-card-empty"><h4>核心产品决策</h4></section>
+            <section class="retrospective-card retrospective-card-empty"><h4>方案设计与取舍</h4></section>
+            <section class="retrospective-card retrospective-card-empty"><h4>验证结果与后续迭代</h4></section>
+          </div></div></div>
+        </div>
       </article></div>
     </section>
 
