@@ -5,36 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Leila · AI 产品作品集</title>
   <meta name="description" content="Leila 的个人求职主页：2027 届中国海洋大学硕士，求职 AI 产品经理实习。了解三个可验证的 AI 项目与两个已上线的小红书小工具。">
-  <meta name="theme-color" content="#eee5f3">
+  <meta name="theme-color" content="#f5f0e7">
   <link rel="preload" href="./assets/lavender-garden.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700&family=Noto+Sans+SC:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=20260920-3">
-  <script src="./script.js?v=20260920-1" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20260920-5">
+  <script src="./script.js?v=20260920-2" defer></script>
 </head>
 <body id="top">
   <a class="skip-link" href="#main">跳转至正文</a>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="#top" aria-label="Leila，回到顶部">Leila</a>
+      <a class="brand" href="#top" aria-label="Leila Portfolio，回到顶部"><span class="brand-mark" aria-hidden="true">L</span><span>LEILA / PORTFOLIO</span></a>
       <button class="menu-toggle" type="button" aria-label="展开导航" aria-controls="main-nav" aria-expanded="false"><span></span><span></span><span></span></button>
       <nav id="main-nav" aria-label="主导航">
-        <a href="#about">关于我</a><a href="#projects">核心经历</a><a href="#mini-products">轻量产品</a><a href="#skills">能力概览</a><a href="#contact">联系我</a>
+        <a href="#about">关于我</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger" type="button" aria-expanded="false" aria-controls="work-submenu"><span class="nav-en">Vibe Coding</span><span class="nav-cn">作品</span><span class="nav-caret" aria-hidden="true">⌄</span></button>
+          <div class="nav-submenu" id="work-submenu">
+            <a href="#projects"><strong>项目经历</strong><span>Agent · LLM 评测 · AI 工作流</span></a>
+            <a href="#mini-products"><strong>轻量产品实践</strong><span>已上线小工具 · 真实用户验证</span></a>
+          </div>
+        </div>
+        <a href="#skills">能力图谱</a><a href="#contact">联系我</a>
+        <a class="nav-resume" href="./assets/tang-jiayi-ai-product-resume.pdf" download="汤嘉懿-AI产品实习-简历.pdf">下载简历 PDF</a>
       </nav>
     </div>
   </header>
   <main id="main" class="container">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow">RESUME &amp; PORTFOLIO</p>
         <h1 id="hero-title"><span class="hero-greeting">你好，</span><span class="hero-name">我是 <em>Leila</em></span></h1>
         <p class="hero-tags">AI 产品 × 评测驱动决策</p>
         <div class="hero-proof" aria-label="项目成果">
           <span>3 个 AI 项目 Demo</span><span>2 个小红书小工具已上线</span><span>单款上线第 2 天 780+ 人使用</span>
         </div>
-        <div class="hero-actions"><a class="button primary" href="#about">认识我</a><a class="button" href="#projects">核心经历</a><a class="button" href="#contact">联系我</a></div>
-        <a class="scroll-link" href="#projects">向下查看项目经历 <span aria-hidden="true">↓</span></a>
+        <div class="hero-actions"><a class="button primary" href="#projects">查看 Vibe Coding 作品</a><a class="button" href="./assets/tang-jiayi-ai-product-resume.pdf" download="汤嘉懿-AI产品实习-简历.pdf">下载简历 PDF</a><a class="button" href="#contact">联系我</a></div>
+        <a class="scroll-link" href="#projects">向下查看作品与产品实践 <span aria-hidden="true">↓</span></a>
       </div>
       <div class="hero-visual"><aside class="profile-card" aria-label="个人信息">
         <div class="profile-item"><h2>2027 届硕士</h2><p>中国海洋大学（985） · 翻译学 · 专业排名 <strong>1/27</strong></p></div>
@@ -44,7 +52,7 @@
     </section>
 
     <section id="about" class="section" aria-labelledby="about-title">
-      <div class="section-heading"><h2 id="about-title">关于我</h2></div>
+      <div class="section-heading" data-kicker="PROFILE / 01"><h2 id="about-title">关于我</h2></div>
       <div class="about-surface"><p class="about-copy">具备 LLM 评测、审校 Agent 与文献筛选工作流项目经验；通过人机双评与分歧复核识别模型能力边界，将评测发现转化为 Agent 人工介入规则；具备从需求拆解、输出 PRD、前端开发、模型调用、后端实现到可运行 Web Demo 原型、前后端联调与部署的完整闭环经验；深度 Vibe Coding，熟练使用 Codex 等智能体，具备快速原型能力，完成 2 个小红书小工具的产品设计开发与上线，其中一款上线第 2 天使用者超过 <strong>780</strong> 人，另一款上线当日使用者超过 <strong>420</strong> 人，验证了从创意拆解、交互设计到真实用户验证的产品落地能力。</p>
       <div class="education-grid" aria-label="教育背景">
         <article class="education"><div class="education-top"><span class="date">2024年8月-2027年6月</span><h3>中国海洋大学 <span>（985）</span></h3></div><p class="education-program">英语语言文学 <span>（翻译学方向） · 推免硕士</span></p><p class="education-result">专业排名 <strong>1/27</strong></p></article>
@@ -54,7 +62,7 @@
     </section>
 
     <section id="projects" class="section" aria-labelledby="projects-title">
-      <div class="section-heading"><h2 id="projects-title">核心经历</h2></div>
+      <div class="section-heading" data-kicker="VIBE CODING / PROJECT CASES"><h2 id="projects-title">项目经历</h2></div>
       <div class="projects-group"><article class="project featured" aria-labelledby="project-agent">
         <header class="project-header">
           <div class="project-title-row"><span class="project-number">01</span><span class="project-tag">项目经历</span><h3 id="project-agent">面向大模型译文的审校决策 Agent</h3></div>
@@ -122,7 +130,7 @@
     </section>
 
     <section id="mini-products" class="section" aria-labelledby="mini-products-title">
-      <div class="section-heading"><h2 id="mini-products-title">轻量产品实践</h2></div>
+      <div class="section-heading" data-kicker="VIBE CODING / SHIPPED PRODUCTS"><h2 id="mini-products-title">轻量产品实践</h2></div>
       <p class="mini-products-intro">2 个小红书小工具已上线，并获得真实用户使用与反馈。</p>
       <div class="mini-products-grid">
         <article class="mini-product-card featured">
@@ -135,7 +143,7 @@
           </div>
           <button class="mini-product-proof" type="button" data-proof-focus="li" aria-label="查看李清照的行李箱平台使用数据大图">
             <span class="proof-image-viewport proof-focus-li"><img src="./assets/xhs-products-usage.png" alt="小红书后台显示李清照的行李箱已发布并有 782 人使用" loading="lazy" width="1635" height="205"></span>
-            <span class="mini-product-proof-caption">平台显示超 <strong>780</strong> 人使用 <span class="proof-view-label">点击查看</span></span>
+            <span class="mini-product-proof-caption">平台显示超 <strong>780</strong> 人使用</span>
           </button>
         </article>
 
@@ -149,7 +157,7 @@
           </div>
           <button class="mini-product-proof" type="button" data-proof-focus="gold" aria-label="查看三金五金自由配平台使用数据大图">
             <span class="proof-image-viewport proof-focus-gold"><img src="./assets/xhs-products-usage.png" alt="小红书后台显示三金五金自由配已发布并有 426 人使用" loading="lazy" width="1635" height="205"></span>
-            <span class="mini-product-proof-caption">平台显示超 <strong>420</strong> 人使用 <span class="proof-view-label">点击查看</span></span>
+            <span class="mini-product-proof-caption">平台显示超 <strong>420</strong> 人使用</span>
           </button>
         </article>
       </div>
@@ -163,7 +171,7 @@
     </dialog>
 
     <section id="skills" class="section" aria-labelledby="skills-title">
-      <div class="section-heading"><h2 id="skills-title">能力概览</h2></div>
+      <div class="section-heading" data-kicker="CAPABILITY MAP / 03"><h2 id="skills-title">能力图谱</h2></div>
       <div class="skills-grid">
         <div>
           <h3>AI 产品与 Agent</h3>
@@ -203,7 +211,7 @@
       </div>
     </section>
 
-    <section id="contact" class="section" aria-labelledby="contact-title"><div class="section-heading"><h2 id="contact-title">联系我</h2></div><div class="contact"><p class="contact-copy">求职方向：AI 产品经理实习生。欢迎通过邮件联系。</p><div class="contact-actions"><a class="email" href="mailto:tjy18726041937@163.com"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 5.5h18v13H3zM3.5 6l8.5 7 8.5-7"/></svg><span>tjy18726041937@163.com</span></a><button class="button copy-button" id="copy-email" type="button">复制邮箱 <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 8h11v11H8zM5 16H4V5h11v1"/></svg></button></div><p class="copy-status" id="copy-status" role="status" aria-live="polite"></p></div></section>
+    <section id="contact" class="section" aria-labelledby="contact-title"><div class="section-heading" data-kicker="LET'S TALK / 04"><h2 id="contact-title">联系我</h2></div><div class="contact"><p class="contact-copy">求职方向：AI 产品经理实习生。欢迎通过邮件联系。</p><div class="contact-actions"><a class="email" href="mailto:tjy18726041937@163.com"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 5.5h18v13H3zM3.5 6l8.5 7 8.5-7"/></svg><span>tjy18726041937@163.com</span></a><button class="button copy-button" id="copy-email" type="button">复制邮箱 <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 8h11v11H8zM5 16H4V5h11v1"/></svg></button></div><p class="copy-status" id="copy-status" role="status" aria-live="polite"></p></div></section>
   </main>
   <footer>Leila · AI 产品作品集</footer>
 </body>

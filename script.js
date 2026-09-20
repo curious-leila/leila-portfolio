@@ -74,6 +74,8 @@ if ('IntersectionObserver' in window) {
 // Compact mobile navigation: click, keyboard, outside click and breakpoint reset.
 const menuToggle = document.querySelector('.menu-toggle');
 const mainNav = document.getElementById('main-nav');
+const workDropdown = document.querySelector('.nav-dropdown');
+const workDropdownTrigger = document.querySelector('.nav-dropdown-trigger');
 function closeMenu(returnFocus = false) {
   menuToggle.setAttribute('aria-expanded', 'false');
   menuToggle.setAttribute('aria-label', '展开导航');
@@ -94,6 +96,16 @@ document.addEventListener('click', event => {
   if (!event.target.closest('.header-inner')) closeMenu();
 });
 window.matchMedia('(max-width: 600px)').addEventListener('change', () => closeMenu());
+
+workDropdownTrigger?.addEventListener('click', () => {
+  const open = workDropdownTrigger.getAttribute('aria-expanded') !== 'true';
+  workDropdownTrigger.setAttribute('aria-expanded', String(open));
+  workDropdown?.classList.toggle('is-open', open);
+});
+workDropdown?.addEventListener('mouseleave', () => {
+  workDropdownTrigger?.setAttribute('aria-expanded', 'false');
+  workDropdown.classList.remove('is-open');
+});
 
 // Usage screenshots open in a focused modal so the platform numbers stay readable.
 const proofDialog = document.getElementById('proof-dialog');
