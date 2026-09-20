@@ -1,5 +1,5 @@
 @font-face{font-family:HelloBrush;src:url('./assets/hello-brush.ttf') format('truetype');font-display:swap}
-:root{--mint:#eee5f3;--bg:#f7f3fa;--ink:#303341;--body:#494655;--border:#b5a1c2;--yellow:#f0e8f5;--blue:#f4eff8;--white:#fff;--shadow:4px 5px 0 #b5a1c2;--radius:16px;font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;color:var(--ink);background:var(--bg)}
+:root{--mint:#eee5f3;--bg:#f7f3fa;--ink:#303341;--body:#494655;--border:#b5a1c2;--yellow:#f0e8f5;--blue:#f4eff8;--white:#fff;--shadow:4px 5px 0 #b5a1c2;--radius:16px;font-family:var(--sans);color:var(--ink);background:var(--bg)}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:112px}body{margin:0;font-size:17px;line-height:1.85;background:var(--bg)}p,h1,h2,h3,h4,figure{margin:0}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}strong{color:#4c365f;font-weight:750}a,button,summary{-webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #79568f;outline-offset:5px}.container,.header-inner{width:min(1120px,calc(100% - 64px));margin:auto}.skip-link{position:fixed;top:-100px;left:16px;background:white;padding:10px;z-index:30}.skip-link:focus{top:10px}
 /* Shared navigation and action states */
 .site-header{position:sticky;top:0;z-index:10;background:#fffdfd;border-bottom:2px solid var(--border)}.header-inner{height:92px;display:flex;justify-content:space-between;align-items:center}.brand{display:inline-block;font-size:28px;font-weight:800;background:var(--mint);padding:3px 19px;border:2px solid var(--border);border-radius:13px;box-shadow:3px 4px 0 var(--border)}nav{display:flex;gap:4px;padding:7px;background:white;border:2px solid var(--border);border-radius:18px;box-shadow:3px 4px 0 var(--border)}nav a{display:flex;align-items:center;min-height:44px;padding:4px 16px;font-size:17px;font-weight:750;border-radius:10px;transition:background .16s}nav a:hover,nav a[aria-current="location"]{background:var(--mint)}.button,.secondary-link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:10px 22px;background:var(--blue);border:2px solid var(--border);border-radius:25px;box-shadow:2px 3px 0 var(--border);font-size:16px;font-weight:750;line-height:1.6;cursor:pointer;transition:transform .16s,box-shadow .16s,background .16s}.button.primary{background:var(--mint)}.hero-actions .button:nth-child(2){background:var(--blue)}.hero-actions .button:nth-child(3),.copy-button{background:var(--yellow)}.button:hover,.secondary-link:hover,.brand:hover{transform:translateY(-3px);box-shadow:3px 6px 0 var(--border);filter:brightness(1.03)}.button:active,.secondary-link:active,.brand:active{transform:translateY(2px);box-shadow:0 1px 0 var(--border)}.brand{transition:transform .16s,box-shadow .16s}.hero-actions,.project-links{display:flex;flex-wrap:wrap;gap:15px;align-items:center}.hero-actions{margin-top:26px}.scroll-link{display:inline-flex;align-items:center;gap:14px;min-height:44px;margin-top:22px;font-size:15px;font-weight:650}.scroll-link:hover,.source-link:hover,.email:hover{text-decoration:underline;text-underline-offset:6px;color:#694880}
@@ -19,7 +19,7 @@
 
 /* Lavender editorial theme: shared hierarchy and controls. */
 :root{--accent:#79578f;--accent-hover:#654477;--shadow:0 8px 26px #6042750b}
-body{position:relative;background:linear-gradient(#faf7fcce,#faf7fce8),url('./assets/lavender-garden.webp') center/cover fixed}
+body{position:relative;background:linear-gradient(#faf7fcce,#faf7fce8),url('./assets/lavender-garden-v2.webp') center/cover fixed}
 .container,.header-inner{width:min(1440px,calc(100% - 96px))}
 .site-header{background:#fffc;backdrop-filter:blur(14px);border-bottom:1px solid #dacde53d}
 .header-inner{height:104px}
@@ -32,7 +32,7 @@ nav a:hover{color:var(--accent-hover);transform:translateY(-2px)}
 .hero-copy{position:relative;width:55%;z-index:2;padding-bottom:20px}
 .eyebrow{font-family:Georgia,serif;font-size:15px;letter-spacing:3px;margin-bottom:25px}
 .hero-greeting{font-family:HelloBrush,KaiTi,serif;font-size:clamp(46px,4.2vw,68px);margin-bottom:4px}
-.hero-name{font-family:Georgia,'Songti SC',SimSun,serif;font-size:clamp(64px,6.7vw,108px);font-weight:700;letter-spacing:-3px;white-space:nowrap;line-height:1.24;color:#253e40}
+.hero-name{font-family:Georgia,var(--editorial);font-size:clamp(64px,6.7vw,108px);font-weight:700;letter-spacing:-3px;white-space:nowrap;line-height:1.24;color:#253e40}
 .hero-name em{color:#795c8b}
 .hero-tags{font-size:clamp(19px,1.9vw,28px);color:#304749;margin:22px 0 14px;font-weight:650}
 .hero-description{font-size:18px;max-width:610px;color:#514e5b;line-height:1.9}
@@ -49,9 +49,9 @@ nav a:hover{color:var(--accent-hover);transform:translateY(-2px)}
 .hero-art img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
 .profile-card{position:absolute;right:0;top:50%;transform:translateY(-50%);width:27%;padding:24px 27px;border:1px solid #dfd4e5;border-radius:20px;background:#fffffff2;box-shadow:0 12px 36px #62477712;pointer-events:auto}
 .profile-top{margin-bottom:0}.profile-caption{visibility:hidden}.profile-badge{background:#f1e5ee;border:0;color:#745785;font-size:15px;font-weight:500;padding:2px 16px}
-.profile-item{padding:20px 0;border-color:#e2d8e7}.profile-item h2{font-family:Georgia,'Songti SC',SimSun,serif;font-size:23px;color:#303143;font-weight:700;margin-bottom:7px}.profile-item p{font-size:16px;line-height:1.85}.profile-item:last-child{padding-bottom:4px}
+.profile-item{padding:20px 0;border-color:#e2d8e7}.profile-item h2{font-family:Georgia,var(--editorial);font-size:23px;color:#303143;font-weight:700;margin-bottom:7px}.profile-item p{font-size:16px;line-height:1.85}.profile-item:last-child{padding-bottom:4px}
 .section{max-width:1180px;margin:0 auto;padding-top:58px;padding-bottom:20px;scroll-margin-top:0}
-.section-heading{margin-bottom:25px}.section-heading h2{font-family:'Songti SC',SimSun,serif;font-size:29px;font-weight:700;color:#624775;background:#ece2f2;padding:7px 20px;border:1px solid #d6c5e1;border-radius:12px;box-shadow:none}
+.section-heading{margin-bottom:25px}.section-heading h2{font-family:var(--editorial);font-size:29px;font-weight:700;color:#624775;background:#ece2f2;padding:7px 20px;border:1px solid #d6c5e1;border-radius:12px;box-shadow:none}
 .about-surface,.projects-group,.contact{border:1.5px solid #cebadb;box-shadow:var(--shadow);background:#fff}
 .projects-group{border-left:4px solid #9c78b0;padding:30px 30px 30px 48px}.projects-group:before{background:#d1bddf;width:2px;left:23px}
 .project-header{background:#fcfaff;border:1px solid #dcd0e4}.project+.project{border-top:1px solid #d7c5e1;margin-top:6px;padding-top:36px}.project-number{background:#ece2f3;color:#69487e}.project-tag{background:#f7f2fa;color:#69487e}.project-links .button,.project-links .secondary-link{font-size:16px}
@@ -68,8 +68,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #79
 @media(max-width:600px){.hero{min-height:0;padding:42px 0 26px}.hero-visual{position:relative;inset:auto;height:655px;margin-top:18px}.hero-art{top:0;bottom:auto;right:2%;height:300px;width:58%}.profile-card{bottom:0;top:auto;background:#fff}.hero:before{background-image:linear-gradient(90deg,#fffdf547,#faf5ff24),url('./assets/lavender-garden.webp')}}
 
 /* Reference typography: Song-style editorial serif, no brush lettering. */
-@font-face{font-family:PortfolioSerif;src:url('./assets/portfolio-serif.woff2') format('woff2');font-weight:200 900;font-style:normal;font-display:swap}
-:root{--editorial:PortfolioSerif,'Noto Serif SC','Songti SC',SimSun,serif}
+@font-face{font-family:PortfolioSerif;src:url('./assets/portfolio-serif-latin.woff2') format('woff2');font-weight:200 900;font-style:normal;font-display:swap}
+@font-face{font-family:PortfolioSerifSC;src:url('./assets/portfolio-serif-sc.woff2') format('woff2');font-weight:200 900;font-style:normal;font-display:swap}
+:root{--sans:"PingFang SC","HarmonyOS Sans SC","OPPO Sans","MiSans","Noto Sans CJK SC","Microsoft YaHei","Segoe UI",Roboto,system-ui,sans-serif;--editorial:PortfolioSerif,PortfolioSerifSC,"Noto Serif SC","Source Han Serif SC","Songti SC",SimSun,serif}
 .hero-copy,nav,.profile-card,.section-heading h2{font-family:var(--editorial)}
 .hero-greeting{font-family:var(--editorial);font-weight:700;-webkit-text-stroke:0;letter-spacing:-2px;color:#253e40;line-height:1.4}
 .hero-name{font-family:var(--editorial);font-weight:700}.hero-name em{font-family:Georgia,serif;font-weight:700}
@@ -187,7 +188,7 @@ nav a{min-height:44px;padding:2px 17px;font-weight:700}
 .profile-item p{font-size:15px;font-weight:600;color:#443d4c}
 .profile-item strong{font-weight:700}
 .email{
-  font-family:"Times New Roman",Times,"Songti SC",SimSun,serif;
+  font-family:"Times New Roman",Times,var(--editorial);
   font-size:22px;
   font-weight:700;
   font-variant-numeric:lining-nums tabular-nums;
@@ -745,7 +746,7 @@ body{line-height:1.8}
 .retrospective-card h4{
   margin:0 0 8px;
   color:#75677d;
-  font-family:"Nunito","Noto Sans SC",system-ui,sans-serif;
+  font-family:var(--sans);
   font-size:13px;
   font-weight:700;
   line-height:1.6;
@@ -791,11 +792,11 @@ body{line-height:1.8}
 .project-role,
 .project-date{
   color:#7c6c84;
-  font-family:"Nunito","Noto Sans SC",system-ui,sans-serif;
+  font-family:var(--sans);
   font-weight:500;
 }
 .project-tag{
-  font-family:"Nunito","Noto Sans SC",system-ui,sans-serif;
+  font-family:var(--sans);
   font-weight:700;
 }
 .project-title-row h3{color:#664b79}
@@ -1098,7 +1099,7 @@ body{background:var(--new-cream);color:var(--new-ink)}
   background:transparent;
   box-shadow:none;
   color:var(--new-ink);
-  font-family:"Nunito","Noto Sans SC",sans-serif;
+  font-family:var(--sans);
   font-size:12px;
   font-style:normal;
   font-weight:800;
@@ -1126,7 +1127,7 @@ nav{
   border-radius:0;
   background:transparent;
   box-shadow:none;
-  font-family:"Nunito","Noto Sans SC",sans-serif;
+  font-family:var(--sans);
 }
 nav a,.nav-dropdown-trigger{
   display:flex;
@@ -1191,7 +1192,7 @@ nav .nav-resume:hover{background:var(--new-coral);color:#fff}
 }
 .hero:before{top:-80px;filter:saturate(.72) sepia(.08)}
 .hero-copy{width:min(100%,880px);max-width:none;padding:0}
-.eyebrow{color:#526363;font-family:"Nunito",sans-serif;font-size:12px;letter-spacing:.22em}
+.eyebrow{color:#526363;font-family:var(--sans);font-size:12px;letter-spacing:.22em}
 .hero-greeting{font-size:clamp(38px,4vw,58px);color:var(--new-ink)}
 .hero-name{font-size:clamp(68px,8.2vw,112px);line-height:1.02;color:var(--new-ink)}
 .hero-name em{color:var(--new-coral)}
@@ -1222,12 +1223,12 @@ nav .nav-resume:hover{background:var(--new-coral);color:#fff}
 }
 .profile-item{padding:22px 24px;border:0;border-right:1px solid #d8d1c5}
 .profile-item:last-child{border-right:0}
-.profile-item h2{color:var(--new-ink);font-family:"Nunito","Noto Sans SC",sans-serif;font-size:16px}
-.profile-item p{color:#556162;font-family:"Nunito","Noto Sans SC",sans-serif;font-size:14px}
+.profile-item h2{color:var(--new-ink);font-family:var(--sans);font-size:16px}
+.profile-item p{color:#556162;font-family:var(--sans);font-size:14px}
 
 .section{padding-top:56px;padding-bottom:58px}
 .section-heading{display:block;margin-bottom:26px}
-.section-heading:before{content:attr(data-kicker);display:block;margin-bottom:8px;color:var(--new-coral);font-family:"Nunito",sans-serif;font-size:11px;font-weight:800;letter-spacing:.16em}
+.section-heading:before{content:attr(data-kicker);display:block;margin-bottom:8px;color:var(--new-coral);font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.16em}
 .section-heading h2{
   display:inline;
   padding:0;
@@ -1332,8 +1333,8 @@ footer{border-color:#d8d1c5;background:#eee7dc;color:#5d6868}
 }
 
 /* Scoped feedback pass: compact first fold and softer blue project cases. */
-.nav-dropdown-trigger .nav-en{font-family:"Nunito",sans-serif;font-size:14px;font-weight:700}
-.nav-dropdown-trigger .nav-cn{font-family:"Noto Sans SC","Microsoft YaHei",sans-serif;font-size:14px;font-weight:700}
+.nav-dropdown-trigger .nav-en{font-family:var(--sans);font-size:14px;font-weight:700}
+.nav-dropdown-trigger .nav-cn{font-family:var(--sans);font-size:14px;font-weight:700}
 .nav-dropdown-trigger .nav-caret{font-size:15px}
 .nav-dropdown:is(:hover,:focus-within,.is-open)>.nav-dropdown-trigger .nav-en,
 .nav-dropdown:is(:hover,:focus-within,.is-open)>.nav-dropdown-trigger .nav-cn{transform:none}
@@ -1395,7 +1396,7 @@ footer{border-color:#d8d1c5;background:#eee7dc;color:#5d6868}
 /* One warm outline system across navigation, cards, dividers, and actions. */
 :root{--unified-line:#9fc9dc;--unified-shadow:#8fbfd666}
 nav>a,.nav-dropdown-trigger .nav-cn{
-  font-family:"Noto Sans SC","Microsoft YaHei","PingFang SC",sans-serif;
+  font-family:var(--sans);
   font-weight:700;
 }
 .header-inner,.nav-submenu,.menu-toggle,
@@ -1680,7 +1681,7 @@ nav>a,.nav-dropdown-trigger .nav-cn{
   font-size:12px;
   font-weight:700;
 }
-.mini-product-meta-right{display:grid;justify-items:end;gap:2px;color:#766d78;font-family:"Noto Sans SC","Microsoft YaHei","PingFang SC",sans-serif;font-size:12px;font-weight:500;text-align:right}
+.mini-product-meta-right{display:grid;justify-items:end;gap:2px;color:#766d78;font-family:var(--sans);font-size:12px;font-weight:500;text-align:right}
 .mini-product-card.featured .mini-product-link{
   border:0!important;
   background:#a8dbc7;
@@ -1713,7 +1714,7 @@ footer{color:#17272c;font-weight:750}
 
 /* Final first-fold treatment: original watercolor sky, crisp type, one outline system. */
 .hero:before{
-  background:url('./assets/hero-watercolor-blue-v2.png') center/cover no-repeat!important;
+  background:url('./assets/hero-watercolor-blue-v2.webp') center/cover no-repeat!important;
   filter:none!important;
 }
 .hero-copy::before{display:none!important;content:none!important}
@@ -1762,4 +1763,11 @@ footer{color:#17272c;font-weight:750}
   .availability p{font-size:13px;white-space:normal}
   .section-heading h2{font-size:29px}
   .mini-product-meta-right{justify-items:start;text-align:left}
+  .hero:before{background-image:url('./assets/hero-watercolor-mobile.webp')!important;background-position:58% center!important}
+}
+
+/* Hero name outline: black stroke drawn under the fill so the pink stays crisp. */
+.hero-name em{
+  -webkit-text-stroke:0.032em #101416;
+  paint-order:stroke fill;
 }
