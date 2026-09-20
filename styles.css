@@ -1728,7 +1728,7 @@ footer{color:#17272c;font-weight:750}
   border-width:2px!important;
   box-shadow:inset 0 0 0 1px #17343a!important;
 }
-.profile-card{grid-template-columns:minmax(0,.9fr) minmax(0,1fr) minmax(0,1.2fr)}
+.profile-card{grid-template-columns:minmax(0,.95fr) minmax(0,.98fr) minmax(0,1.2fr)}
 .profile-card>.profile-item:nth-child(2) p{white-space:nowrap}
 .availability p{font-size:14px;white-space:nowrap}
 .direction{background:#fff0b8!important}
@@ -1770,4 +1770,9 @@ footer{color:#17272c;font-weight:750}
 .hero-name em{
   -webkit-text-stroke:0.032em #101416;
   paint-order:stroke fill;
+}
+
+/* Keep each profile line on one row once the card splits into columns (1101px and up). */
+@media(min-width:1101px){
+  .profile-card>.profile-item p{white-space:nowrap;font-size:clamp(11px,1.05vw,14px)}
 }
