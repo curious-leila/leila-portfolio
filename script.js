@@ -94,3 +94,28 @@ document.addEventListener('click', event => {
   if (!event.target.closest('.header-inner')) closeMenu();
 });
 window.matchMedia('(max-width: 600px)').addEventListener('change', () => closeMenu());
+
+// Usage screenshots open in a focused modal so the platform numbers stay readable.
+const proofDialog = document.getElementById('proof-dialog');
+const proofDialogImage = proofDialog?.querySelector('img');
+const proofDialogTitle = document.getElementById('proof-dialog-title');
+let proofTrigger = null;
+
+document.querySelectorAll('.mini-product-proof').forEach((proof) => {
+  proof.addEventListener('click', () => {
+    if (!proofDialog || !proofDialogImage) return;
+    proofTrigger = proof;
+    const focus = proof.dataset.proofFocus;
+    const sourceImage = proof.querySelector('img');
+    proofDialog.dataset.proofFocus = focus;
+    proofDialogImage.alt = sourceImage?.alt || '小红书平台使用数据';
+    proofDialogTitle.textContent = focus === 'li' ? '李清照的行李箱 · 平台使用数据' : '三金五金自由配 · 平台使用数据';
+    proofDialog.showModal();
+  });
+});
+
+proofDialog?.querySelector('.proof-dialog-close')?.addEventListener('click', () => proofDialog.close());
+proofDialog?.addEventListener('click', (event) => {
+  if (event.target === proofDialog) proofDialog.close();
+});
+proofDialog?.addEventListener('close', () => proofTrigger?.focus());
