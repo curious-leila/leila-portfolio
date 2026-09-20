@@ -1680,7 +1680,7 @@ nav>a,.nav-dropdown-trigger .nav-cn{
   font-size:12px;
   font-weight:700;
 }
-.mini-product-meta-right{display:grid;justify-items:end;gap:2px;color:#766d78;font-size:12px;font-weight:650;text-align:right}
+.mini-product-meta-right{display:grid;justify-items:end;gap:2px;color:#766d78;font-family:"Noto Sans SC","Microsoft YaHei","PingFang SC",sans-serif;font-size:12px;font-weight:500;text-align:right}
 .mini-product-card.featured .mini-product-link{
   border:0!important;
   background:#a8dbc7;
@@ -1738,9 +1738,9 @@ footer{color:#17272c;font-weight:750}
     grid-template-rows:auto auto;
     align-content:space-between;
   }
-  .hero-copy{transform:translateY(22px)}
-  .project:first-child .project-links{flex-wrap:nowrap}
-  .project:first-child .project-link-card{height:100%;display:flex;flex-direction:column;justify-content:space-between}
+  .hero-copy{transform:translateY(38px)}
+  .project .project-links{flex-wrap:nowrap}
+  .project .project-link-card{height:100%;display:flex;flex-direction:column;justify-content:space-between}
 }
 
 @media(min-width:761px) and (max-width:1100px){
