@@ -2471,3 +2471,104 @@ nav a:hover,nav a[aria-current="location"],nav a[aria-current="location"]:hover{
   .project-meta{gap:10px}
 }
 
+/* ⑨ 「向下查看作品与产品实践」hover 下划线断裂感
+   根因（实测）：.scroll-link 是 display:inline-flex + gap:6px，而 hover 的
+   `text-decoration:underline` 写在 flex 容器上 —— 按规范下划线会**分别**画在
+   「文字匿名 flex item」和「箭头 span」两段上，中间的 6px flex gap 不被装饰（天然断口）；
+   同时 hover 又让箭头 translateY(4px)，箭头那段下划线整体下移 4–5px。
+   截图实测：主线条 y=52（宽 193px）、箭头线条 y=57（宽 18px）—— 两条线错位，就是"断裂感"。
+   修法：不再用 text-decoration，改用绝对定位的一条 ::after 画整条连续下划线，
+   箭头下沉时光滑生长/收回，互不牵扯。 */
+.scroll-link{
+  position:relative;
+  text-decoration:none!important;
+  padding-bottom:3px;
+}
+.scroll-link::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:4px;
+  height:1.6px;
+  border-radius:2px;
+  background:currentColor;
+  opacity:0;
+  transform:scaleX(.35);
+  transform-origin:left center;
+  transition:opacity .2s ease,transform .3s cubic-bezier(.2,.9,.3,1.2);
+}
+.scroll-link:hover,.scroll-link:focus-visible{
+  text-decoration:none!important;
+  text-underline-offset:0!important;
+  color:#694880;
+}
+.scroll-link:hover::after,.scroll-link:focus-visible::after{opacity:1;transform:scaleX(1)}
+.scroll-link{transition:color .2s ease}
+
+/* ⑩ 首屏三个按钮：仿项目卡按钮做「静态就有厚度、悬停抬起加厚、按下回落」的立体手感
+   原静态是纯色块 + 1px inset 描边环，hover 只把底色压深 2px，看着"平"。
+   这里改成四层叠出来（渐变造体积 / 顶部内高光 / 底边实色当厚度 / 柔和外阴影）。
+   底边阴影 blur 必须为 0，且 hover 时要比静态更厚（3px → 6px）才像被抬起来。
+
+   ⚠️ 选择器为什么要带 `.hero ... >a.button`：文件中部有条
+   `.hero .hero-actions>a.button{box-shadow:inset 0 0 0 1px #17343a!important}`，
+   特异度 (0,3,1) 高于 `.hero-actions .button:nth-child(1)` 的 (0,3,0)，
+   同为 !important 时它赢 —— 所以这里必须写到 (0,4,1) 及以上才盖得住。 */
+.hero .hero-actions>a.button{
+  border-width:2px!important;
+  transition:transform .18s cubic-bezier(.2,.9,.3,1.2),box-shadow .18s,background .18s;
+}
+.hero .hero-actions>a.button:nth-child(1){
+  background:linear-gradient(180deg,#2c5158 0%,#17343a 100%)!important;
+  box-shadow:inset 0 1px 0 #ffffff33,0 3px 0 #0e2226,0 8px 16px -9px #17343a80!important;
+}
+.hero .hero-actions>a.button:nth-child(1):hover{
+  background:linear-gradient(180deg,#39646c 0%,#1e4349 100%)!important;
+  transform:translateY(-2px)!important;
+  box-shadow:inset 0 1px 0 #ffffff4d,0 6px 0 #0a1b1f,0 18px 26px -14px #17343acc!important;
+}
+.hero .hero-actions>a.button:nth-child(2){
+  background:linear-gradient(180deg,#e2f8ef 0%,#c9efdf 100%)!important;
+  box-shadow:inset 0 1px 0 #ffffff,0 3px 0 #94c9b4,0 8px 16px -9px #c9efdf99!important;
+}
+.hero .hero-actions>a.button:nth-child(2):hover{
+  background:linear-gradient(180deg,#d6f5e9 0%,#a9e6d1 100%)!important;
+  transform:translateY(-2px)!important;
+  box-shadow:inset 0 1px 0 #ffffff,0 6px 0 #7fb9a2,0 18px 26px -14px #94c9b4cc!important;
+}
+.hero .hero-actions>a.button:nth-child(3){
+  background:linear-gradient(180deg,#e2f5fe 0%,#c7eafd 100%)!important;
+  box-shadow:inset 0 1px 0 #ffffff,0 3px 0 #93c6de,0 8px 16px -9px #c7eafd99!important;
+}
+.hero .hero-actions>a.button:nth-child(3):hover{
+  background:linear-gradient(180deg,#d5f0fd 0%,#a9ddf7 100%)!important;
+  transform:translateY(-2px)!important;
+  box-shadow:inset 0 1px 0 #ffffff,0 6px 0 #7fb4cd,0 18px 26px -14px #93c6decc!important;
+}
+/* ⚠️ 按下态必须逐条带 :nth-child：鼠标按住时元素同时命中 :hover，
+   而 `.hero .hero-actions>a.button:nth-child(n):hover` 的特异度 (0,5,1) 高于
+   不带 nth 的 `...:active` (0,4,1) —— 不写 nth 的话 hover 会把按下态盖掉。 */
+.hero .hero-actions>a.button:nth-child(1):active,
+.hero .hero-actions>a.button:nth-child(2):active,
+.hero .hero-actions>a.button:nth-child(3):active{
+  transform:translateY(2px)!important;
+  box-shadow:inset 0 2px 4px #00000026,0 0 0 #0e2226,0 4px 10px -8px #17343a66!important;
+}
+
+/* ⚠️ 无障碍：这里的特异度也必须跟上上面带 :nth-child 的 hover/active，
+   否则 (0,4,1) 的 transform:none!important 会被 (0,5,1) 的位移动画盖掉。 */
+@media(prefers-reduced-motion:reduce){
+  .hero .hero-actions>a.button:nth-child(1):hover,
+  .hero .hero-actions>a.button:nth-child(2):hover,
+  .hero .hero-actions>a.button:nth-child(3):hover,
+  .hero .hero-actions>a.button:nth-child(1):active,
+  .hero .hero-actions>a.button:nth-child(2):active,
+  .hero .hero-actions>a.button:nth-child(3):active{transform:none!important}
+  .scroll-link::after{transition:none}
+}
+
+/* ⑪ 移动端热区：放大图「关闭」实测 73×37，高度不足 44px 的可点下限，小屏补足。 */
+@media(max-width:760px){
+  .proof-lightbox-close{min-height:44px;padding:8px 18px}
+}
+
+

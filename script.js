@@ -119,7 +119,13 @@ document.querySelectorAll('.platform-data-stack .clickable-proof').forEach((proo
     if (!proofLightbox || !proofLightboxImage || !source) return;
     proofTrigger = proof;
     const alt = source.getAttribute('alt') || '平台使用数据';
-    proofLightboxImage.src = source.getAttribute('src');
+    proofLightboxImage.removeAttribute('srcset');
+    // 高清素材：2x 屏下把大图换成 2x 资源，并按逻辑尺寸锁死宽度
+    // （既不放大也不缩小，只是让设备像素与原图 1:1，纯提清晰度）
+    const base = source.getAttribute('src');
+    const hiRes = base.replace(/\.png$/i, '-2x.png');
+    proofLightboxImage.src = (window.devicePixelRatio || 1) > 1 ? hiRes : base;
+    proofLightboxImage.style.width = source.naturalWidth ? source.naturalWidth + 'px' : '';
     proofLightboxImage.alt = alt;
     if (proofLightboxTitle) {
       proofLightboxTitle.textContent = alt.split('，')[0].replace(/使用数据$/, '') + ' · 平台使用数据';
