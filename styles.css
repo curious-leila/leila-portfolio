@@ -2252,3 +2252,134 @@ nav a:hover,nav a[aria-current="location"],nav a[aria-current="location"]:hover{
   .copy-button:active{transform:none!important}
 }
 
+/* ============================================================
+   Round 11 — 收尾修正
+   ============================================================ */
+
+/* ① 汉堡按钮的三条线：底色规则原本只写在 @media(max-width:600px) 里，
+   601–760px 区间 .menu-toggle span 的 background 是 transparent —— 按钮看着是个空方块。
+   把线条自身样式提到全局，任何显示汉堡按钮的宽度都有颜色。 */
+.menu-toggle span{
+  height:2px;
+  background:currentColor;
+  border-radius:2px;
+  transition:transform .2s,opacity .2s;
+}
+
+/* ①b 移动端下拉菜单（601–760px 区间此前是坏的）：
+   - nav 的 position:absolute / flex-direction:column 只写在 ≤600px 的旧规则里，
+     601–760px 区间 nav 是 static 且横向排列 —— 展开后菜单挤在导航条内、被纵向居中裁掉顶部。
+   - 桌面端「去掉内层白色」的 .brand,nav{background:transparent!important} 会波及这个下拉面板，
+     面板会透出后面的内容，这里补回不透明底色与投影。 */
+@media(max-width:760px){
+  nav{
+    position:absolute;
+    top:calc(100% + 6px);
+    right:0;
+    width:min(330px,calc(100vw - 32px));
+    padding:8px;
+    background:#fffdf8!important;
+    border:1px solid #d4cdc1!important;
+    border-radius:16px;
+    box-shadow:0 18px 42px #3c2f2428!important;
+  }
+  nav.is-open{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+}
+
+/* ② 平台数据：两张图由「纵向堆叠」改为「并排一行」，纵向占用从约 450px 收到约 150px。
+   截图右侧是「下架 / 编辑 / 更新版本」等后台操作按钮，不属于证据信息，
+   用 object-fit:cover 只显示左侧信息区 —— 这样 480px 的显示宽度接近原图 1:1，数字不糊。
+   点击任意一张可打开完整原图（见 .proof-lightbox）。 */
+.data-hint{
+  margin-left:9px;
+  color:#8a8378;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.2px;
+}
+.platform-data-stack{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  justify-items:stretch;
+  align-items:start;
+  gap:14px;
+  margin-top:12px;
+}
+.platform-data-stack .mini-product-proof{
+  /* @media(max-width:1180px) 里 .mini-product-proof 被设成 grid-column:1/-1（跨满整行），
+     所以 661–1180px 区间两张图会各自占一整行、并被放大到约 2 倍。这里复位为单列占位。 */
+  grid-column:auto;
+  justify-self:stretch;
+  width:100%;
+  padding:8px;
+  border-radius:12px;
+}
+.platform-data-stack .mini-product-proof img{
+  aspect-ratio:2.3 / 1;
+  object-fit:cover;
+  object-position:left center;
+  border-radius:8px;
+}
+@media(max-width:660px){
+  .platform-data-stack{grid-template-columns:minmax(0,1fr);gap:11px}
+  .platform-data-stack .mini-product-proof{width:min(100%,470px);justify-self:center}
+}
+
+/* ③ 平台数据完整大图 */
+.proof-lightbox{
+  width:min(94vw,900px);
+  padding:0;
+  border:0;
+  border-radius:18px;
+  background:transparent;
+  overflow:visible;
+}
+.proof-lightbox::backdrop{background:#0d222b73}
+.proof-lightbox-panel{
+  overflow:hidden;
+  border:1px solid #cfd9de;
+  border-radius:18px;
+  background:#fffdf8;
+  box-shadow:0 32px 74px -22px #0d222b70;
+}
+.proof-lightbox-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:13px 16px;
+  border-bottom:1px solid #e5ded4;
+}
+.proof-lightbox-head h2{margin:0;color:#24383d;font-size:16px;font-weight:750}
+.proof-lightbox-close{
+  min-height:34px;
+  padding:6px 15px;
+  border:1px solid #d6cfc4;
+  border-radius:999px;
+  background:#fff;
+  color:#405052;
+  font:inherit;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+  transition:background .18s,border-color .18s,color .18s;
+}
+.proof-lightbox-close:hover{border-color:#a2c4d8;background:#eef7fd;color:#2f7fa8}
+.proof-lightbox-body{padding:14px;background:#f6f3ec}
+/* 按原图原生宽度显示，不做放大，避免糊 */
+.proof-lightbox-body img{display:block;width:auto;max-width:100%;height:auto;margin:0 auto;border-radius:10px}
+
+/* ④ 项目标题：≤760px 时 .project-title-row h3 被设成了 grid-column:1/-1（标题独占一行）。
+   改为回到第 3 列、与「01 项目经历」同行；空间不够时标题在自己那一列内换行。四个项目统一生效。 */
+@media(max-width:760px){
+  .project-title-row h3{
+    grid-column:auto;
+    min-width:0;
+    margin:1px 0 0 2px;
+    font-size:19px;
+  }
+}
+

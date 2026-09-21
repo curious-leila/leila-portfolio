@@ -107,5 +107,29 @@ workDropdown?.addEventListener('mouseleave', () => {
   workDropdown.classList.remove('is-open');
 });
 
-// 说明：平台使用数据图已改为在小红书项目卡片内纵向完整展示，
-// 原先的放大弹窗（proof-dialog）已随模块删除，不再需要绑定交互。
+// 平台使用数据：卡片里的截图点击后打开完整原图，便于 HR 放大核对具体数字。
+const proofLightbox = document.getElementById('proof-lightbox');
+const proofLightboxImage = document.getElementById('proof-lightbox-image');
+const proofLightboxTitle = document.getElementById('proof-lightbox-title');
+let proofTrigger = null;
+
+document.querySelectorAll('.platform-data-stack .clickable-proof').forEach((proof) => {
+  proof.addEventListener('click', () => {
+    const source = proof.querySelector('img');
+    if (!proofLightbox || !proofLightboxImage || !source) return;
+    proofTrigger = proof;
+    const alt = source.getAttribute('alt') || '平台使用数据';
+    proofLightboxImage.src = source.getAttribute('src');
+    proofLightboxImage.alt = alt;
+    if (proofLightboxTitle) {
+      proofLightboxTitle.textContent = alt.split('，')[0].replace(/使用数据$/, '') + ' · 平台使用数据';
+    }
+    proofLightbox.showModal();
+  });
+});
+
+proofLightbox?.querySelector('.proof-lightbox-close')?.addEventListener('click', () => proofLightbox.close());
+proofLightbox?.addEventListener('click', (event) => {
+  if (event.target === proofLightbox) proofLightbox.close();
+});
+proofLightbox?.addEventListener('close', () => proofTrigger?.focus());
