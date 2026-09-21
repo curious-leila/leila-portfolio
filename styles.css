@@ -2383,3 +2383,91 @@ nav a:hover,nav a[aria-current="location"],nav a[aria-current="location"]:hover{
   }
 }
 
+/* ============================================================
+   Round 12 — 折叠按钮、文案、字号与项目元信息校对
+   ============================================================ */
+
+/* ① 折叠菜单按钮：一点点微圆角 + 黑色描边
+   现状：border-radius 只有 ≤600px 那版写了 12px，601–760px 是 0（方角方块）；
+   描边被 .header-inner,.menu-toggle{...border-color:var(--unified-line)!important} 统一染成浅蓝 #9fc9dc。
+   黑色取站内既有的 --module-outline（#17343a），与各模块描边同色；圆角收到 6px 只留"一点点"。 */
+.menu-toggle{
+  border-color:#17343a!important;
+  border-radius:6px;
+}
+@media(max-width:600px){
+  .menu-toggle{border-radius:6px}
+}
+
+/* ② 关于我：「Vibe Coding」锁成一行，别被拆成 Vibe / Coding 两行 */
+.nowrap-token{white-space:nowrap}
+
+/* ③ 教育背景：校名小一号；(985) 与校名同字号（原来 span 单独压在 13px） */
+.education h3{font-size:17px!important}
+.education h3 span{font-size:17px!important}
+@media(max-width:760px){
+  .education h3,
+  .education h3 span{font-size:16px!important}
+}
+
+/* ④ 放大图右上角关闭：显式指定黑体（无衬线）+ 加重，防止掉进衬线字体栈 */
+.proof-lightbox-close{
+  font-family:var(--sans)!important;
+  font-weight:800;
+  color:#17343a;
+}
+
+/* ⑤ 项目角色：字色与本卡片「项目经历」标签一致（--case-tone），并排一行，
+   落在标题（左）与日期（右）之间；桌面原来在 .project-meta 里是上下堆叠，现在改成一行。 */
+.project-role{
+  color:var(--case-tone)!important;
+  font-weight:600;
+  white-space:nowrap;
+}
+.project-date{white-space:nowrap}
+.project-meta{
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:baseline;
+  justify-content:flex-end;
+  gap:16px;
+  text-align:right;
+}
+@media(max-width:760px){
+  .project-meta{justify-content:space-between;text-align:left}
+}
+
+/* ⑥ 项目 03 两个小工具按钮：小窗不再掉字号
+   原来 font-size:clamp(13px,1.05vw,15px) —— 1.05vw 在 <1429px 全部落到下限 13px，
+   ≤760px 又被两次覆盖成 12px / 13px，于是 48px 高的药丸里挤着 12–13px 的字。
+   实测按钮宽度在 460px 以上视口就有 180px+，15px 完全放得下，所以直接固定 15px，
+   并把 auto-fit 的最小列宽从 126px 提到 162px：放不下 15px 时自动改单列（单列时按钮更宽，同样够）。
+   162px 的依据：文字自然宽 ≈ 8.86em + 25px（箭头 0.86em + 5px 边距 + 16px 内边距 + 4px 描边），
+   15px 时约 158px，留 4px 余量。 */
+.project:nth-child(3) .project-link-card .project-links{
+  grid-template-columns:repeat(auto-fit,minmax(142px,1fr))!important;
+}
+.project:nth-child(3) .project-links .button.primary,
+.project:nth-child(3) .project-links .secondary-link{
+  padding:10px 8px;
+  font-size:15px;
+}
+@media(max-width:440px){
+  .project:nth-child(3) .project-links .button.primary,
+  .project:nth-child(3) .project-links .secondary-link{
+    padding:10px 6px;
+    font-size:13px;
+  }
+}
+
+/* ⑦ 项目 03 / 04 的标签早期被单独改过字色（鹅黄标签 #4d4536、绿色标签 #365f55），
+   所以「角色＝--case-tone」在它们身上对不上标签。这里按各卡标签的实际字色补齐。 */
+.project:nth-child(3) .project-role{color:#4d4536!important}
+.project:nth-child(4) .project-role{color:#365f55!important}
+
+/* ⑧ ≤420px：角色与日期一行放不下（320px 时项目 02 的日期被挤到第二行），
+   把 flex gap 从 16px 收到 10px。 */
+@media(max-width:420px){
+  .project-meta{gap:10px}
+}
+
