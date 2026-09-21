@@ -9,8 +9,8 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ece1f1'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='40' font-weight='700' fill='%23644778' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
   <link rel="preload" href="./assets/hero-watercolor-blue-v2.webp" as="image" type="image/webp" fetchpriority="high" media="(min-width:761px)">
   <link rel="preload" href="./assets/hero-watercolor-mobile.webp" as="image" type="image/webp" fetchpriority="high" media="(max-width:760px)">
-  <link rel="stylesheet" href="./styles.css?v=20260921-22">
-  <script src="./script.js?v=20260921-22" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20260921-24">
+  <script src="./script.js?v=20260921-24" defer></script>
 </head>
 <body id="top">
   <a class="skip-link" href="#main">跳转至正文</a>
@@ -62,7 +62,7 @@
             <div class="project-meta"><span class="project-role">AI 产品设计与开发</span><span class="project-date">2026.08–2026.09</span></div>
           </header>
           <div class="project-overview">
-            <p class="project-description">设计并开发面向营销文案、客服话术与界面文案的译后审校 Agent 原型，结合前置评测结果、质量评估与证据查证，实现三级审校分流，并支持查看决策依据与回放执行轨迹。</p>
+            <p class="project-description">独立设计并开发译后审校 Agent，将模型审校结果转化为自动通过 / 抽样复核 / 人工复核三级路径决策，并通过证据查证与规则治理控制模型自主权。</p>
             <div class="project-link-card"><div class="project-links"><a class="button primary" href="https://curious-leila.github.io/llm-translation-review-decision-agent/" target="_blank" rel="noopener noreferrer">在线 Demo ↗</a><a class="secondary-link" href="https://github.com/curious-leila/llm-translation-review-decision-agent" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></div><p class="project-keywords">Vibe Coding / AI Agent / 译文审校场景 / Web&nbsp;Demo</p></div>
           </div>
           <div class="case-background"><h4>背景</h4><p>全量人工审校成本高，直接依赖模型判断又存在漏判、误判风险。需要译文把关的团队普遍面临一个矛盾：复核成本与质量风险不可兼得。</p></div>
@@ -85,7 +85,7 @@
 
         <article class="project" aria-labelledby="project-eval">
           <header class="project-header"><div class="project-title-row"><span class="project-number">02</span><span class="project-tag">项目经历</span><h3 id="project-eval">大模型译文审校可靠性评测</h3></div><div class="project-meta"><span class="project-role">评测设计与产品策略</span><span class="project-date">2026.07–2026.08</span></div></header>
-          <div class="project-overview"><p class="project-description">基于 MQM 多维翻译质量评估框架开展大模型译文审校可靠性评测，通过180组人机双评识别高风险术语判断的低可靠性场景，形成可靠性矩阵与分歧复核记录，并通过在线看板展示评测发现。</p><div class="project-link-card"><div class="project-links"><a class="button primary" href="https://curious-leila.github.io/leila-evalboard/" target="_blank" rel="noopener noreferrer">评测看板 ↗</a><a class="secondary-link" href="https://github.com/curious-leila/leila-evalboard" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></div><p class="project-keywords">大模型评测 / 人机双评 / 在线数据看板</p></div></div>
+          <div class="project-overview"><p class="project-description">为回答“哪些审校判断可以交给模型”，独立设计人机双评，形成可靠性矩阵与分级人工介入策略，并作为后续 Agent 权限设计依据。</p><div class="project-link-card"><div class="project-links"><a class="button primary" href="https://curious-leila.github.io/leila-evalboard/" target="_blank" rel="noopener noreferrer">评测看板 ↗</a><a class="secondary-link" href="https://github.com/curious-leila/leila-evalboard" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></div><p class="project-keywords">大模型评测 / 人机双评 / 在线数据看板</p></div></div>
           <div class="case-background"><h4>背景</h4><p>承担译文审校的团队在将大模型用于营销文案、客服话术与界面文案的审校前，需要了解其在不同质量维度与内容风险下的表现。整体评分难以定位薄弱环节，人机判断出现分歧时，也缺少可直接用于确认错误与分析原因的依据。</p></div>
           <div class="project-body"><h4 class="content-label">主要工作</h4><ul class="work-list agent-work-list">
             <li>基于 MQM 翻译质量评估框架，定义术语、准确性、本地化与受众适配四个维度及评分标准；构建 94 条可追溯双语语料，按误译后果标注内容风险，选取 15 条开展试跑评测。</li>
@@ -110,7 +110,7 @@
           </header>
           <div class="project-overview">
             <p class="project-description">独立完成 2 款小红书小工具的需求拆解、交互设计与开发上线，获得真实用户使用验证。</p>
-            <div class="project-link-card"><div class="project-links"><a class="button primary demo-link" href="https://www.xiaohongshu.com/s/poster?bgimg=https%3A%2F%2Fsns-redskillhub-s1.xhscdn.com%2Fred_app_image%2F1040g4m8325b1jckd565g5n357r540ofm3veom88%3Fsign%3D27dedfd938dc021057e2df31ee2fa3c1%26t%3D6c90ab32&amp;xhsshare=&amp;appuid=5c653eca00000000100061f6&amp;apptime=178" target="_blank" rel="noopener noreferrer">《李清照的行李箱》<span class="demo-arrow" aria-hidden="true">↗</span></a><a class="button primary demo-link" href="https://www.xiaohongshu.com/s/poster?bgimg=https%3A%2F%2Fsns-redskillhub-s1.xhscdn.com%2Fred_app_image%2F1040g4m8325b1jckd564g5n357r540ofmgvmh76o%3Fsign%3D64a7f751a47146ed9f67ae20d7493d34%26t%3D6c90ad1e&amp;xhsshare=&amp;appuid=5c653eca00000000100061f6&amp;apptime=178" target="_blank" rel="noopener noreferrer">《三金五金自由配》<span class="demo-arrow" aria-hidden="true">↗</span></a></div><p class="project-keywords">Vibe Coding / 文旅 / 小红书小工具</p></div>
+            <div class="project-link-card"><div class="project-links"><a class="button primary demo-link" href="https://www.xiaohongshu.com/s/poster?bgimg=https%3A%2F%2Fsns-redskillhub-s1.xhscdn.com%2Fred_app_image%2F1040g4m8325b1jckd565g5n357r540ofm3veom88%3Fsign%3D27dedfd938dc021057e2df31ee2fa3c1%26t%3D6c90ab32&amp;xhsshare=&amp;appuid=5c653eca00000000100061f6&amp;apptime=178" target="_blank" rel="noopener noreferrer">《李清照的行李箱》<span class="demo-arrow" aria-hidden="true">↗</span></a><a class="secondary-link demo-link demo-link-secondary" href="https://www.xiaohongshu.com/s/poster?bgimg=https%3A%2F%2Fsns-redskillhub-s1.xhscdn.com%2Fred_app_image%2F1040g4m8325b1jckd564g5n357r540ofmgvmh76o%3Fsign%3D64a7f751a47146ed9f67ae20d7493d34%26t%3D6c90ad1e&amp;xhsshare=&amp;appuid=5c653eca00000000100061f6&amp;apptime=178" target="_blank" rel="noopener noreferrer">《三金五金自由配》<span class="demo-arrow" aria-hidden="true">↗</span></a></div><p class="project-keywords">Vibe Coding / 文旅 / 小红书小工具</p></div>
           </div>
           <div class="project-body">
             <h4 class="content-label">主要工作</h4>
@@ -128,7 +128,7 @@
 
         <article class="project compact" aria-labelledby="project-literature">
           <header class="project-header"><div class="project-title-row"><span class="project-number">04</span><span class="project-tag">项目经历</span><h3 id="project-literature">文献 AI 筛选与邮件简报工作流</h3></div><div class="project-meta"><span class="project-role">AI 工作流开发</span><span class="project-date">2026.05</span></div></header>
-          <div class="project-overview"><p class="project-description">搭建面向知网 / WOS 导出文件的文献筛选工作流，通过历史去重与 Qwen 相关度判断完成文献分级，推送包含判定理由、阅读建议与原文入口的邮件简报。</p><div class="project-link-card"><div class="project-links"><a class="button primary" href="https://curious-leila.github.io/literature-tracker/" target="_blank" rel="noopener noreferrer">在线证据页 ↗</a><a class="secondary-link" href="https://github.com/curious-leila/literature-tracker" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></div><p class="project-keywords">AI 工作流 / 文献筛选 / 邮件简报</p></div></div>
+          <div class="project-overview"><p class="project-description">从自身文献追踪需求出发，将检索结果解析、历史去重、AI 分级与邮件推送自动化。</p><div class="project-link-card"><div class="project-links"><a class="button primary" href="https://curious-leila.github.io/literature-tracker/" target="_blank" rel="noopener noreferrer">在线证据页 ↗</a><a class="secondary-link" href="https://github.com/curious-leila/literature-tracker" target="_blank" rel="noopener noreferrer">GitHub 仓库</a></div><p class="project-keywords">AI 工作流 / 文献筛选 / 邮件简报</p></div></div>
           <div class="case-background"><h4>背景</h4><p>准备毕业论文时，需要持续跟踪特定研究主题；知网与 WOS 导出格式不同，跨关键词、跨批次检索还会产生重复记录，每次检索后都要重新合并、去重并判断阅读价值。</p></div>
           <div class="project-body"><h4 class="content-label">主要工作</h4><ul class="work-list agent-work-list">
             <li>梳理“文件导入—历史去重—相关度判断—简报生成—邮件推送”流程，实现知网 / WOS 双格式解析、SQLite 历史去重与 Qwen 相关度分级；将高 / 中 / 低结果分别对应优先阅读全文、摘要审阅和背景参考。</li>

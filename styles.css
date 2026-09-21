@@ -1871,16 +1871,25 @@ footer{background:transparent!important;border-top-color:#ffffff8c!important}
   gap:8px;
   margin-top:11px;
 }
-.project:nth-child(3) .project-links .button.primary{
+.project:nth-child(3) .project-links .button.primary,
+.project:nth-child(3) .project-links .secondary-link{
   width:100%;
   min-width:0;
   min-height:0;
   padding:9px 10px;
   font-size:clamp(13px,1.05vw,15px);
   white-space:nowrap;
+  text-align:center;
+}
+/* 第二个入口（三金五金自由配）保持次级视觉权重：
+   不额外指定底色，直接复用其余项目「GitHub 仓库」那颗 secondary-link 的样式。 */
+.project:nth-child(3) .demo-link-secondary{
+  color:#513b49;
+  font-weight:650;
 }
 @media(max-width:760px){
-  .project:nth-child(3) .project-links .button.primary{padding:9px 6px;font-size:12px}
+  .project:nth-child(3) .project-links .button.primary,
+  .project:nth-child(3) .project-links .secondary-link{padding:9px 6px;font-size:12px}
 }
 .demo-arrow{
   margin-left:5px;
@@ -2010,6 +2019,8 @@ footer{background:transparent!important;border-top-color:#ffffff8c!important}
 .pf-line{display:block;padding:1px 0}
 .hero .profile-item strong{font-weight:700;color:#1e3b4a}
 
+/* 761–1100px 折两列：这个宽度区间三列会把每片挤到 2 行以上，反而比两列更高，
+   所以维持两列 + 第三片跨列。 */
 @media(min-width:761px) and (max-width:1100px){
   .hero .profile-card{grid-template-columns:1fr 1fr}
   .hero .profile-card>.profile-item:nth-child(3){grid-column:1/-1;margin-top:12px}
@@ -2023,5 +2034,221 @@ footer{background:transparent!important;border-top-color:#ffffff8c!important}
   .hero .profile-item:nth-child(3){margin-top:0;margin-right:12px;border-radius:32px 26px 30px 32px}
   .hero .profile-item h2{font-size:16px}
   .hero .profile-item p{font-size:15px}
+}
+
+/* ============================================================
+   Round 9 — 模块标题与正文整体下调 2 个字号
+   规则：主体文本统一 -2px，已 ≤14px 的辅助信息（日期、标签、脚注）不再下调，
+   否则会牺牲可读性。
+   ============================================================ */
+.section-heading h2{font-size:clamp(26px,3.1vw,40px)!important}
+.about-copy,
+.project-description{font-size:15px!important}
+.education p,
+.direction p,
+.work-module p,
+.case-background p,
+.retrospective p,
+.retrospective-card p,
+.skills-grid p,
+.skills-grid>div p,
+.contact>p,
+.contact-copy,
+.work-list li,
+.work-module li,
+.case-background li,
+.retrospective li,
+.skills-grid li,
+.contact li{font-size:14px!important}
+.education h3,
+.direction h3,
+.skills-grid h3{font-size:19px!important}
+.education h3 span{font-size:13px!important}
+/* 云朵正文 15.5 → 14（触下限，不再往下压） */
+.hero .profile-item p{font-size:14px!important}
+.hero .profile-item h2{font-size:16px}
+/* 移动端：标题 29 → 27，正文 16 → 14，子标题 19 → 17，全部再确认一遍下限。
+   云朵正文不再往下压（保持 14px），手机上 13px 会难读。 */
+@media(max-width:760px){
+  .section-heading h2{font-size:27px!important}
+  .about-copy,
+  .project-description{font-size:14px!important}
+  .education h3,
+  .direction h3,
+  .skills-grid h3{font-size:17px!important}
+  .work-list li{font-size:14px!important}
+  .hero .profile-item p{font-size:14px!important}
+}
+
+/* ============================================================
+   Round 9 — 云朵从「贴着底部山线」错开到「天空中部」
+
+   原来 space-between 把云压到 hero 最底部，紧贴下方内容，看起来还是"底部一条"。
+   改为：hero 第二行用 1fr 吃掉剩余高度，hero-visual 变成 flex 容器，
+   云朵在其中垂直居中 —— 于是云自动落进「文案底 → 山线」这片天空的正中。
+
+   为什么不用固定 vh 的 margin：761–1100px 区间云朵会折成两行、自身变高，
+   固定 margin 会把它顶出首屏（第三片被裁掉）。flex 居中会随云高自适应。
+   `align-items:safe center`：容器比云还矮时回退成顶部对齐，避免向上下溢出。
+   ============================================================ */
+@media(min-width:761px){
+  .hero{
+    grid-template-rows:auto 1fr!important;
+    align-content:stretch!important;
+  }
+  .hero .hero-visual{
+    display:flex;
+    align-items:center;
+    min-height:0;
+    padding:0;
+  }
+  .hero .profile-card{margin:0!important}
+  /* 飘到空中后把三片的错落幅度加大，更像被风吹开而不是排成一行 */
+  .hero .profile-item:nth-child(1){margin-top:34px}
+  .hero .profile-item:nth-child(3){margin-top:18px}
+}
+/* 矮屏（≤800px 高）时文案再往下压 38px 会把云朵顶出去，收回这段位移 */
+@media(min-width:761px) and (max-height:800px){
+  .hero-copy{transform:none!important}
+}
+
+/* ============================================================
+   Round 10
+   1) 导航栏：去掉 brand / nav 两块方角纯白填充，只留 header 自身的米白条
+   2) 首屏三个成果标签放大一档
+   3) 职业方向：标签独立成行、轻权重、比正文小一号
+   4) 复制邮箱 hover 由紫改蓝
+   5) 总起句填充自适应文案高度；右侧按钮卡与左侧等高
+   6) 按钮卡静态/悬停改成更饱满的立体按钮
+   7) 项目 03 两个小工具按钮：窄屏不再被拉长、不折行、不溢出
+   ============================================================ */
+
+/* 1 —— 导航栏“白色截图感”来自 brand / nav 自身的 #fdfcfe 方角填充，
+   叠在 header 的米白圆角条上像贴了一张截图。去掉内层白色，只留米白。 */
+.brand,nav{
+  background:transparent!important;
+  box-shadow:none!important;
+}
+/* 去掉内层白色后，导航悬停底色需要自己撑起来 */
+nav a:hover,nav a[aria-current="location"],nav a[aria-current="location"]:hover{
+  background:#eae2d4!important;
+}
+
+/* 2 —— 首屏三个成果标签：字号与内边距同步放大，视觉权重抬起来 */
+.hero-proof{gap:10px;margin-top:13px}
+.hero-proof span{
+  min-height:37px;
+  padding:7px 16px;
+  border-width:1.5px!important;
+  font-size:15px;
+  font-weight:750;
+}
+@media(max-width:760px){
+  .hero-proof{gap:8px;margin-top:11px}
+  .hero-proof span{min-height:33px;padding:5px 12px;font-size:14px}
+}
+
+/* 3 —— 职业方向：标签独占一行、轻权重、比正文小一号（正文 14 → 标签 13） */
+.direction{padding:19px 22px!important}
+.direction p{font-size:14px!important;line-height:1.75;color:#4b4331!important}
+.direction-label{
+  display:block!important;
+  margin:0 0 6px!important;
+  color:#a3906a!important;
+  font-size:13px!important;
+  font-weight:500!important;
+  letter-spacing:.06em;
+  line-height:1.4;
+}
+
+/* 4 —— 复制邮箱 hover：原来落到紫色，改成蓝色 */
+.copy-button:hover{
+  background:#2f86bf!important;
+  border-color:#2f86bf!important;
+  color:#fff!important;
+  box-shadow:0 3px 0 #1d6390,0 12px 22px -12px #2f86bfcc!important;
+}
+.copy-button:active{
+  background:#2a78ad!important;
+  transform:translateY(2px)!important;
+  box-shadow:0 1px 0 #1d6390!important;
+}
+
+/* 5 —— 总起句填充只包住自己的文案；右栏按钮卡收紧到同一高度 */
+.project-overview{align-items:start}
+.project-description{padding:24px 19px}
+.project-link-card .project-links{padding:10px 13px 9px}
+.project-keywords{padding:7px 13px 8px;line-height:1.5}
+.project:nth-child(3) .project-overview{align-items:start!important}
+.project:nth-child(3) .project-description{display:block!important}
+
+/* 6 —— 按钮卡：静态就有厚度，悬停更饱满、按下有回弹 */
+.project-links .button.primary,
+.project-links .secondary-link{
+  border-width:2px!important;
+  transition:transform .18s cubic-bezier(.2,.9,.3,1.2),box-shadow .18s,background .18s,filter .18s;
+}
+.project-links .button.primary{
+  background:linear-gradient(180deg,#f7c6da 0%,#eaa0be 100%)!important;
+  box-shadow:inset 0 1px 0 #ffffffb8,0 3px 0 #b67d96,0 8px 16px -9px #b67d9680!important;
+}
+.project-links .button.primary:hover{
+  background:linear-gradient(180deg,#f8b3ce 0%,#e08bb0 100%)!important;
+  transform:translateY(-2px)!important;
+  box-shadow:inset 0 1px 0 #ffffffcc,0 6px 0 #a9637f,0 18px 26px -14px #a9637fcc!important;
+  filter:saturate(1.05);
+}
+.project-links .secondary-link{
+  background:linear-gradient(180deg,#fffafc 0%,#f7dbe7 100%)!important;
+  box-shadow:inset 0 1px 0 #ffffff,0 3px 0 #c89bad,0 8px 16px -9px #c89bad73!important;
+}
+.project-links .secondary-link:hover{
+  background:linear-gradient(180deg,#ffffff 0%,#f2c9db 100%)!important;
+  transform:translateY(-2px)!important;
+  box-shadow:inset 0 1px 0 #ffffff,0 6px 0 #b3849b,0 18px 26px -14px #b3849bc4!important;
+}
+.project-links .button.primary:active,
+.project-links .secondary-link:active{
+  transform:translateY(2px)!important;
+  box-shadow:inset 0 1px 0 #ffffff99,0 0 0 #b67d96,0 4px 10px -8px #b67d9680!important;
+}
+
+/* 7 —— 项目 03 两个小工具入口：
+   原来固定两等分，窗口一窄（≤900px 变单列）按钮就被拉成整行宽；
+   改成 auto-fit，宽时两列 179px，窄时收窄到 126px 仍并排，真放不下才换行；
+   并用 max-width 封顶，避免单列布局下按钮被撑长。 */
+.project:nth-child(3) .project-link-card .project-links{
+  display:grid!important;
+  grid-template-columns:repeat(auto-fit,minmax(126px,1fr))!important;
+  max-width:min(100%,430px);
+  gap:9px;
+  margin-top:0;
+}
+.project:nth-child(3) .project-links .button.primary,
+.project:nth-child(3) .project-links .secondary-link{
+  width:100%;
+  min-width:0;
+  min-height:48px;
+  padding:10px 10px;
+  font-size:clamp(13px,1.05vw,15px);
+  white-space:nowrap;
+  text-align:center;
+}
+@media(max-width:760px){
+  .project:nth-child(3) .project-links .button.primary,
+  .project:nth-child(3) .project-links .secondary-link{padding:10px 8px;font-size:13px}
+}
+
+/* ≤760px 的移动菜单按钮：此前只在 ≤600px 给了尺寸，601–760px 区间会缩成一个小方块 */
+@media(max-width:760px){
+  .menu-toggle{width:46px;height:46px;padding:10px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .project-links .button.primary:hover,
+  .project-links .secondary-link:hover,
+  .project-links .button.primary:active,
+  .project-links .secondary-link:active,
+  .copy-button:active{transform:none!important}
 }
 
