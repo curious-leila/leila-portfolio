@@ -2582,4 +2582,68 @@ nav a:hover,nav a[aria-current="location"],nav a[aria-current="location"]:hover{
   .proof-lightbox-close{min-height:44px;padding:8px 18px}
 }
 
+/* ============================================================
+   Round 18 — 微信内置浏览器下载引导
+   微信（iOS WKWebView / 安卓 X5）不支持 <a download> 触发的文件下载：
+   点击后不发起真实请求，只会落下一个 0KB 空文件，并被微信按下载名缓存。
+   JS 检测到微信 UA 后去掉 download 属性，并弹出本引导层。
+   ============================================================ */
+.wechat-tip{
+  width:min(92vw,440px);
+  padding:0;
+  border:0;
+  border-radius:18px;
+  background:transparent;
+  overflow:visible;
+}
+.wechat-tip::backdrop{background:#0d222b73}
+.wechat-tip-panel{
+  overflow:hidden;
+  border:1.5px solid #a181b5;
+  border-radius:18px;
+  background:#fffdfd;
+  box-shadow:0 32px 74px -22px #2a123a70;
+}
+.wechat-tip-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 18px;
+  border-bottom:1.5px solid #ded2e7;
+  background:#f3ecf7;
+}
+.wechat-tip-head h2{
+  margin:0;
+  font-family:var(--editorial);
+  font-size:17px;
+  font-weight:700;
+  line-height:1.5;
+  color:#4f3560;
+}
+.wechat-tip-close{
+  flex:0 0 auto;
+  min-height:36px;
+  padding:6px 15px;
+  border:1.5px solid #cbbbd5;
+  border-radius:999px;
+  background:#fff;
+  color:#17343a;
+  font-family:var(--sans);
+  font-size:13px;
+  font-weight:800;
+  cursor:pointer;
+  transition:background .18s,border-color .18s,color .18s;
+}
+.wechat-tip-close:hover{border-color:#a181b5;background:#f3ecf7;color:#4f3560}
+.wechat-tip-body{padding:18px}
+.wechat-tip-body p{margin:0 0 15px;font-size:15px;line-height:1.85;color:var(--body)}
+.wechat-tip-body b{font-weight:800;color:#4f3560}
+.wechat-tip-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:0}
+.wechat-tip-actions .copy-status{margin-top:0;min-height:0;font-size:13px}
+@media(max-width:760px){
+  .wechat-tip-close{min-height:44px;padding:8px 18px}
+  .wechat-tip-actions .button{min-height:48px}
+}
+
 
