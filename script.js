@@ -140,58 +140,20 @@ proofLightbox?.addEventListener('click', (event) => {
 });
 proofLightbox?.addEventListener('close', () => proofTrigger?.focus());
 
-/* 微信内置浏览器（iOS WKWebView / 安卓 X5）不支持 <a download> 触发的文件下载：
-   点击后不会发起真实请求，只会生成一个 0KB 的空文件，并被微信按下载文件名缓存成
-   「坏记录」（之后换文件也不重新请求）。这里检测微信 UA，摘掉 download 属性，
-   并弹出引导层，请用户到系统浏览器里下载。 */
-const isWeChat = /MicroMessenger/i.test(navigator.userAgent);
-if (isWeChat) {
-  const wechatTip = document.getElementById('wechat-tip');
-  const wechatCopyButton = document.getElementById('wechat-copy-link');
-  const wechatCopyStatus = document.getElementById('wechat-copy-status');
-
+/* 微信「手机端」内置浏览器（iOS WKWebView / 安卓 X5）不支持 <a download> 触发的文件下载：
+   点击后不发起真实请求，只会落下一个 0KB 的空文件，并被微信按下载文件名缓存成
+   「坏记录」（之后换了文件也不重新请求）。而微信内置查看器本身能正常渲染 PDF，
+   所以这里不做任何弹层，只做两件事：
+     ① 摘掉 download 属性 —— 按钮变成普通链接，点击直接在微信里「预览」PDF，
+        预览页可用「··· / 用其他应用打开」保存到文件；
+     ② 文案由「下载简历 PDF」改成「预览简历」，避免用户以为点了没反应。
+   生效范围仅限「手机微信」：桌面浏览器、微信电脑版（WindowsWechat / MacWechat）
+   以及手机自带浏览器一律不受影响，仍照常下载、保留中文文件名。 */
+const ua = navigator.userAgent;
+const isMobileWeChat = /MicroMessenger/i.test(ua) && /Android|iPhone|iPad|iPod/i.test(ua);
+if (isMobileWeChat) {
   document.querySelectorAll('a.js-resume').forEach((link) => {
-    // 摘掉 download，避免微信再生成 0KB 的损坏文件记录
     link.removeAttribute('download');
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      wechatTip?.showModal();
-    });
-  });
-
-  wechatTip?.querySelector('.wechat-tip-close')?.addEventListener('click', () => wechatTip.close());
-  wechatTip?.addEventListener('click', (event) => {
-    if (event.target === wechatTip) wechatTip.close();
-  });
-
-  wechatCopyButton?.addEventListener('click', async () => {
-    const url = new URL('assets/tang-jiayi-ai-product-resume.pdf?v=20260921-34', window.location.href).href;
-    let copied = false;
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(url);
-        copied = true;
-      }
-    } catch { /* 微信内若无剪贴板权限，走下面的兜底 */ }
-    if (!copied) {
-      const field = document.createElement('textarea');
-      field.value = url;
-      field.setAttribute('readonly', '');
-      field.style.cssText = 'position:fixed;top:0;left:0;opacity:0;font-size:16px;';
-      document.body.appendChild(field);
-      field.select();
-      field.setSelectionRange(0, url.length);
-      try { copied = document.execCommand('copy'); } finally { field.remove(); }
-    }
-    wechatCopyButton.textContent = copied ? '链接已复制 ✓' : '复制失败';
-    wechatCopyStatus.dataset.state = copied ? 'success' : 'error';
-    wechatCopyStatus.textContent = copied
-      ? '粘贴到手机浏览器地址栏打开即可下载。'
-      : '请长按选中链接手动复制。';
-    setTimeout(() => {
-      wechatCopyButton.textContent = '复制简历链接';
-      wechatCopyStatus.textContent = '';
-      delete wechatCopyStatus.dataset.state;
-    }, 3000);
+    link.textContent = '预览简历';
   });
 }
