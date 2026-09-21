@@ -1781,26 +1781,42 @@ footer{color:#17272c;font-weight:750}
 /* ============================================================
    Round 5 refinements — 背景色 / 卡片标签配色 / 数据图排版
    ============================================================ */
+/* ============================================================
+   Round 7 — 首屏水彩天空提升为全局固定背景
+   背景不动，白色内容卡片在其上滑动；导航栏只保留按钮本身，
+   整条 header 不再铺底色，滚动时能看到背景穿过。
+   ============================================================ */
 :root{--page-bg:#D4ECFA}
 html{background:#D4ECFA}
-body{background:#D4ECFA!important}
-/* 让首屏的水彩天空与页面背景色平滑衔接，避免出现色带 */
-.hero:after{
+body{background:transparent!important}
+body::before{
   content:"";
-  position:absolute;
-  right:0;
-  bottom:-1px;
-  left:0;
-  height:150px;
-  background:linear-gradient(to bottom,#D4ECFA00,#D4ECFA);
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:url('./assets/hero-watercolor-blue-v2.webp') center/cover no-repeat;
   pointer-events:none;
-  z-index:0;
 }
-.hero>.hero-copy,.hero>.hero-visual{position:relative;z-index:1}
 @media(max-width:760px){
-  .hero:after{height:104px}
+  body::before{background-image:url('./assets/hero-watercolor-mobile.webp');background-position:58% center}
 }
-footer{background:#D4ECFA!important}
+/* 首屏不再单独铺一层背景，避免与全局背景错位 */
+.hero:before{background:none!important}
+.hero:after{display:none!important}
+footer{background:transparent!important;border-top-color:#ffffff8c!important}
+
+/* 导航栏“抠出来”：header 整条透明，只有 brand 与 nav 药丸保留自身底色 */
+.site-header{
+  background:transparent!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  border-bottom:0!important;
+  box-shadow:none!important;
+}
+.brand,nav{
+  background:#fdfcfe!important;
+  box-shadow:0 3px 10px #17343a1f,0 0 0 1px #ffffffb3!important;
+}
 
 /* Design-system normalization: 去掉历史遗留的黄色圆形编号，统一为排版式编号 */
 .project-number,
@@ -1845,44 +1861,25 @@ footer{background:#D4ECFA!important}
   color:#8a6d1d!important;
 }
 
-/* 项目 03：两个在线体验入口改为等宽整行，产品名靠左、动作靠右，一眼可对应 */
+/* 项目 03：按钮沿用其他项目卡片的 .button.primary 样式，内容为工具名 + 末尾小箭头 */
 .project:nth-child(3) .project-overview{align-items:stretch}
 .project:nth-child(3) .project-description{display:flex;align-items:center}
 .project:nth-child(3) .project-link-card .project-links{
-  display:grid;
-  grid-template-columns:minmax(0,1fr);
+  flex-wrap:wrap;
   gap:9px;
   margin-top:11px;
 }
 .project:nth-child(3) .project-links .button.primary{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  width:100%;
-  padding:9px 15px;
-  text-align:left;
-}
-.demo-link-name{font-weight:750}
-.demo-link-action{
-  display:inline-flex;
-  align-items:center;
-  gap:5px;
-  flex:0 0 auto;
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:.2px;
-  opacity:.88;
+  min-height:0;
+  padding:9px 16px;
   white-space:nowrap;
 }
-.demo-link-caption{
-  margin:13px 15px 0;
-  padding-bottom:9px;
-  border-bottom:1px dashed #e0d5bd;
-  color:#7d6a3a;
-  font-size:13px;
-  font-weight:650;
-  line-height:1.6;
+.demo-arrow{
+  margin-left:5px;
+  font-size:.86em;
+  font-weight:700;
+  line-height:1;
+  transform:translate(1px,2px);
 }
 .project:nth-child(3) .project-keywords{color:#6a5b2e!important}
 
