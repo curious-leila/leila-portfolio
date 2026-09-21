@@ -107,27 +107,5 @@ workDropdown?.addEventListener('mouseleave', () => {
   workDropdown.classList.remove('is-open');
 });
 
-// Usage screenshots open in a focused modal so the platform numbers stay readable.
-const proofDialog = document.getElementById('proof-dialog');
-const proofDialogImage = proofDialog?.querySelector('img');
-const proofDialogTitle = document.getElementById('proof-dialog-title');
-let proofTrigger = null;
-
-document.querySelectorAll('.mini-product-proof').forEach((proof) => {
-  proof.addEventListener('click', () => {
-    if (!proofDialog || !proofDialogImage) return;
-    proofTrigger = proof;
-    const focus = proof.dataset.proofFocus;
-    const sourceImage = proof.querySelector('img');
-    proofDialog.dataset.proofFocus = focus;
-    proofDialogImage.alt = sourceImage?.alt || '小红书平台使用数据';
-    proofDialogTitle.textContent = focus === 'li' ? '李清照的行李箱 · 平台使用数据' : '三金五金自由配 · 平台使用数据';
-    proofDialog.showModal();
-  });
-});
-
-proofDialog?.querySelector('.proof-dialog-close')?.addEventListener('click', () => proofDialog.close());
-proofDialog?.addEventListener('click', (event) => {
-  if (event.target === proofDialog) proofDialog.close();
-});
-proofDialog?.addEventListener('close', () => proofTrigger?.focus());
+// 说明：平台使用数据图已改为在小红书项目卡片内纵向完整展示，
+// 原先的放大弹窗（proof-dialog）已随模块删除，不再需要绑定交互。
