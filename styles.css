@@ -70,9 +70,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #79
 
 /* Reference typography: Song-style editorial serif, no brush lettering. */
 @font-face{font-family:PortfolioSerif;src:url('./assets/portfolio-serif-latin.woff2') format('woff2');font-weight:200 900;font-style:normal;font-display:swap}
-@font-face{font-family:PortfolioSerifSC;src:url('./assets/portfolio-serif-sc.woff2') format('woff2');font-weight:200 900;font-style:normal;font-display:swap}
-/* 能力概览的「概」「览」未进 sc 子集，单独补一个仅含这二字的子集，用 unicode-range 精准补位 */
-@font-face{font-family:PortfolioSerifSC;src:url('./assets/portfolio-serif-cjk-supp.woff2') format('woff2');font-weight:200 900;font-style:normal;font-display:swap;unicode-range:U+6982,U+89C8}
+@font-face{font-family:PortfolioSerifSC;src:url('./assets/portfolio-serif-sc.woff2?v=20260926-01') format('woff2');font-weight:200 900;font-style:normal;font-display:swap}
+/* 曾用 unicode-range 补位子集（portfolio-serif-cjk-supp.woff2）单独补「概/览」二字，
+   已废弃并从仓库删除：iOS Safari 不加载 name 表为空的补位字体，iPhone 上这两字反而
+   回退成系统字体。现在所有字形都在上面这一份主字体里，改文案后用
+   tools/make-sc-subset.py 重新生成即可。 */
 :root{--sans:"PingFang SC","HarmonyOS Sans SC","OPPO Sans","MiSans","Noto Sans CJK SC","Microsoft YaHei","Segoe UI",Roboto,system-ui,sans-serif;--editorial:PortfolioSerif,PortfolioSerifSC,"Noto Serif SC","Source Han Serif SC","Songti SC",SimSun,serif}
 .hero-copy,nav,.profile-card,.section-heading h2{font-family:var(--editorial)}
 .hero-greeting{font-family:var(--editorial);font-weight:700;-webkit-text-stroke:0;letter-spacing:-2px;color:#253e40;line-height:1.4}
