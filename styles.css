@@ -2044,24 +2044,28 @@ footer{background:transparent!important;border-top-color:#ffffff8c!important}
    否则会牺牲可读性。
    ============================================================ */
 .section-heading h2{font-size:clamp(26px,3.1vw,40px)!important}
-.about-copy,
-.project-description{font-size:15px!important}
 .education p,
 .direction p,
-.work-module p,
-.case-background p,
-.retrospective p,
-.retrospective-card p,
 .skills-grid p,
 .skills-grid>div p,
 .contact>p,
-.contact-copy,
+.skills-grid li,
+.contact li{font-size:14px!important}
+/* Round 10 —— 正文放大：关于我 / 项目概述 / 背景 / 主要工作 / 产品决策与复盘折叠区 / 联系我
+   统一到 16px（原 14~15px），标题、日期与其余模块字号不变。
+   「求职方向」那句写成 .contact .contact-copy（特异性 0,2,0），
+   为了压过上面固定 copy-status 用的 .contact>p（0,1,1）；copy-status 仍是 14px。 */
+.about-copy,
+.project-description,
+.contact .contact-copy,
+.case-background p,
+.work-module p,
+.retrospective p,
+.retrospective-card p,
 .work-list li,
 .work-module li,
 .case-background li,
-.retrospective li,
-.skills-grid li,
-.contact li{font-size:14px!important}
+.retrospective li{font-size:16px!important}
 .education h3,
 .direction h3,
 .skills-grid h3{font-size:19px!important}
@@ -2069,16 +2073,14 @@ footer{background:transparent!important;border-top-color:#ffffff8c!important}
 /* 云朵正文 15.5 → 14（触下限，不再往下压） */
 .hero .profile-item p{font-size:14px!important}
 .hero .profile-item h2{font-size:16px}
-/* 移动端：标题 29 → 27，正文 16 → 14，子标题 19 → 17，全部再确认一遍下限。
-   云朵正文不再往下压（保持 14px），手机上 13px 会难读。 */
+/* 移动端：标题 29 → 27，辅助正文 16 → 14，子标题 19 → 17，全部再确认一遍下限。
+   云朵正文不再往下压（保持 14px），手机上 13px 会难读。
+   正文（关于我 / 项目概述 / 背景 / 主要工作 / 复盘折叠区 / 求职方向）保持 16px，不再随小屏回落到 14px。 */
 @media(max-width:760px){
   .section-heading h2{font-size:27px!important}
-  .about-copy,
-  .project-description{font-size:14px!important}
   .education h3,
   .direction h3,
   .skills-grid h3{font-size:17px!important}
-  .work-list li{font-size:14px!important}
   .hero .profile-item p{font-size:14px!important}
 }
 
