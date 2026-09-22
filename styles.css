@@ -1185,7 +1185,12 @@ nav .nav-resume{
   background:var(--new-ink);
   color:#fff;
 }
-nav .nav-resume:hover{background:var(--new-coral);color:#fff}
+/* 「下载简历 PDF」的悬停：和左上角 LEILA / PORTFOLIO 一样给出珊瑚红反馈
+   （品牌色 --new-coral，与首屏按钮、小工具链接的悬停同色）。
+   必须带 !important：后面 Round 补丁里有一条 `nav a:hover{background:#eae2d4!important}`
+   用来给普通导航项做米白悬停底，不加权的话会被它压掉 —— 表现是白字落在米白底上，
+   看着像"悬停变白、没有反馈"。 */
+nav .nav-resume:hover{background:var(--new-coral)!important;color:#fff!important}
 
 .hero{
   display:grid;
