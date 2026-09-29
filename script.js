@@ -120,17 +120,18 @@ document.querySelectorAll('.platform-data-stack .clickable-proof').forEach((proo
     proofTrigger = proof;
     const alt = source.getAttribute('alt') || '平台使用数据';
     proofLightboxImage.removeAttribute('srcset');
-    // 高清素材：2x 屏下把大图换成 2x 资源，并按逻辑尺寸锁死宽度
-    // （既不放大也不缩小，只是让设备像素与原图 1:1，纯提清晰度）
-    const base = source.getAttribute('src');
-    const hiRes = base.replace(/\.png$/i, '-2x.png');
-    proofLightboxImage.src = (window.devicePixelRatio || 1) > 1 ? hiRes : base;
-    proofLightboxImage.style.width = source.naturalWidth ? source.naturalWidth + 'px' : '';
+    // 卡片和弹窗共用同一份高清证据图；弹窗尺寸由 CSS 放大，避免点开后反而更小。
+    const hiRes = source.dataset.full || source.currentSrc || source.getAttribute('src');
+    proofLightboxImage.src = hiRes;
+    proofLightboxImage.width = source.naturalWidth || Number(source.getAttribute('width')) || 2170;
+    proofLightboxImage.height = source.naturalHeight || Number(source.getAttribute('height')) || 549;
+    proofLightboxImage.style.removeProperty('width');
     proofLightboxImage.alt = alt;
     if (proofLightboxTitle) {
       proofLightboxTitle.textContent = alt.split('，')[0].replace(/使用数据$/, '') + ' · 平台使用数据';
     }
     proofLightbox.showModal();
+    requestAnimationFrame(() => proofLightbox.querySelector('.proof-lightbox-body')?.scrollTo(0, 0));
   });
 });
 

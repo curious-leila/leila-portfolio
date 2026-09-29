@@ -2301,10 +2301,7 @@ nav a:hover,nav a[aria-current="location"],nav a[aria-current="location"]:hover{
   }
 }
 
-/* ② 平台数据：两张图由「纵向堆叠」改为「并排一行」，纵向占用从约 450px 收到约 150px。
-   截图右侧是「下架 / 编辑 / 更新版本」等后台操作按钮，不属于证据信息，
-   用 object-fit:cover 只显示左侧信息区 —— 这样 480px 的显示宽度接近原图 1:1，数字不糊。
-   点击任意一张可打开完整原图（见 .proof-lightbox）。 */
+/* ② 平台数据：高清证据图纵向展示，避免并排缩小后文字发糊。 */
 .data-hint{
   margin-left:9px;
   color:#8a8378;
@@ -2313,35 +2310,35 @@ nav a:hover,nav a[aria-current="location"],nav a[aria-current="location"]:hover{
   letter-spacing:.2px;
 }
 .platform-data-stack{
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  justify-items:stretch;
+  grid-template-columns:minmax(0,1fr);
+  justify-items:center;
   align-items:start;
-  gap:14px;
+  gap:16px;
   margin-top:12px;
 }
 .platform-data-stack .mini-product-proof{
-  /* @media(max-width:1180px) 里 .mini-product-proof 被设成 grid-column:1/-1（跨满整行），
-     所以 661–1180px 区间两张图会各自占一整行、并被放大到约 2 倍。这里复位为单列占位。 */
   grid-column:auto;
-  justify-self:stretch;
-  width:100%;
+  justify-self:center;
+  width:min(100%,860px);
   padding:8px;
   border-radius:12px;
 }
 .platform-data-stack .mini-product-proof img{
-  aspect-ratio:2.3 / 1;
-  object-fit:cover;
-  object-position:left center;
+  width:100%;
+  height:auto;
+  aspect-ratio:auto;
+  object-fit:contain;
   border-radius:8px;
 }
 @media(max-width:660px){
   .platform-data-stack{grid-template-columns:minmax(0,1fr);gap:11px}
-  .platform-data-stack .mini-product-proof{width:min(100%,470px);justify-self:center}
+  .platform-data-stack .mini-product-proof{width:100%;justify-self:center}
 }
 
 /* ③ 平台数据完整大图 */
 .proof-lightbox{
-  width:min(94vw,900px);
+  width:min(96vw,1680px);
+  max-width:none;
   padding:0;
   border:0;
   border-radius:18px;
@@ -2379,9 +2376,12 @@ nav a:hover,nav a[aria-current="location"],nav a[aria-current="location"]:hover{
   transition:background .18s,border-color .18s,color .18s;
 }
 .proof-lightbox-close:hover{border-color:#a2c4d8;background:#eef7fd;color:#2f7fa8}
-.proof-lightbox-body{padding:14px;background:#f6f3ec}
-/* 按原图原生宽度显示，不做放大，避免糊 */
-.proof-lightbox-body img{display:block;width:auto;max-width:100%;height:auto;margin:0 auto;border-radius:10px}
+.proof-lightbox-body{max-height:calc(92vh - 62px);overflow:auto;padding:14px;background:#f6f3ec}
+/* 桌面端打开后约为卡片图的 1.7–2 倍；移动端保留原尺寸，可横向滑动核对细节。 */
+.proof-lightbox-body img{display:block;width:min(1600px,calc(96vw - 44px));max-width:none;height:auto;margin:0 auto;border-radius:10px}
+@media(max-width:760px){
+  .proof-lightbox-body img{width:1100px;margin:0}
+}
 
 /* ④ 项目标题：≤760px 让标题独占整行（位于「01 项目经历」下方），
    并把字号收到 18px，确保最长的标题（如「面向大模型译文的审校决策 Agent」）也能单行显示；
