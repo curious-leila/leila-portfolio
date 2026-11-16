@@ -1069,6 +1069,8 @@ body{line-height:1.8}
 /* 2026-09-20 differentiation pass: floating utility nav, one-column hero, and two visual work modes. */
 :root{
   --new-ink:#17343a;
+  --nav-accent-blue:#b9e2f3;
+  --nav-accent-blue-hover:#9bcfe7;
   --new-body:#3f4b4b;
   --new-cream:#f5f0e7;
   --new-paper:#fffdf8;
@@ -1117,8 +1119,10 @@ body{background:var(--new-cream);color:var(--new-ink)}
   width:34px;
   height:34px;
   border-radius:50%;
-  background:var(--new-ink);
-  color:#fff;
+  border:1px solid rgba(255,255,255,.96);
+  background:linear-gradient(145deg,#dff4fc 0%,var(--nav-accent-blue) 58%,#a9d8ee 100%);
+  color:var(--new-ink);
+  box-shadow:inset 0 1px 0 #fff,0 5px 11px rgba(34,83,105,.34),0 13px 21px rgba(23,52,58,.2);
   font-family:Georgia,serif;
   font-size:17px;
   font-style:italic;
@@ -1182,15 +1186,21 @@ nav a:hover,nav a[aria-current="location"],nav a[aria-current="location"]:hover,
 nav .nav-resume{
   margin-left:7px;
   padding-inline:17px;
-  background:var(--new-ink);
-  color:#fff;
+  border:1px solid rgba(255,255,255,.96);
+  background:linear-gradient(145deg,#e5f6fc 0%,var(--nav-accent-blue) 62%,#b0ddf0 100%);
+  color:var(--new-ink);
+  box-shadow:inset 0 1px 0 #fff,0 6px 13px rgba(34,83,105,.32),0 15px 25px rgba(23,52,58,.22);
+  -webkit-backdrop-filter:blur(16px) saturate(150%);
+  backdrop-filter:blur(16px) saturate(150%);
+  transition:background .2s,box-shadow .2s,transform .2s,border-color .2s;
 }
-/* 「下载简历 PDF」的悬停：和左上角 LEILA / PORTFOLIO 一样给出珊瑚红反馈
-   （品牌色 --new-coral，与首屏按钮、小工具链接的悬停同色）。
-   必须带 !important：后面 Round 补丁里有一条 `nav a:hover{background:#eae2d4!important}`
-   用来给普通导航项做米白悬停底，不加权的话会被它压掉 —— 表现是白字落在米白底上，
-   看着像"悬停变白、没有反馈"。 */
-nav .nav-resume:hover{background:var(--new-coral)!important;color:#fff!important}
+nav .nav-resume:hover{
+  background:linear-gradient(145deg,#f2fbff 0%,#cceafa 58%,var(--nav-accent-blue-hover) 100%)!important;
+  color:var(--new-ink)!important;
+  border-color:#fff!important;
+  box-shadow:inset 0 1px 0 #fff,0 9px 17px rgba(34,83,105,.4),0 19px 30px rgba(23,52,58,.28)!important;
+  transform:translateY(-1px);
+}
 
 .hero{
   display:grid;
@@ -1925,8 +1935,8 @@ footer{background:transparent!important;border-top-color:#ffffff8c!important}
   color:#2f7d66!important;
 }
 
-/* 小红书卡片：两条工具名称与正文同样式，不再加粗 */
-.work-item-title{font-weight:inherit;color:inherit}
+/* 小红书卡片：突出两款工具名称，正文仍保持统一字重。 */
+.work-item-title{font-weight:700!important;color:inherit}
 .work-item-title::after{content:"：";margin-right:2px}
 
 /* 小红书卡片：平台数据图纵向排列并居中，完整显示两张图 */
@@ -2708,6 +2718,34 @@ nav a:hover,nav a[aria-current="location"],nav a[aria-current="location"]:hover{
 .hero .hero-proof span:hover::after{
   opacity:.82;
   transform:translateX(470%) rotate(8deg);
+}
+
+/* Requested content and readability refinements. */
+.hero .hero-actions>a.button{font-weight:800!important}
+.education-grid .education p{
+  font-size:16px!important;
+  line-height:1.45!important;
+  margin:3px 0 0!important;
+}
+.education-grid .education-result{font-weight:350!important}
+.education-grid .education-result .ocean-ranking{font-weight:750!important}
+.project.xhs-project .project-role{color:#806b42!important}
+.hero .hero-actions>a.button{font-size:18px!important}
+.hero .hero-proof span{color:#2b7398!important}
+
+/* Keep every navigation label readable as the window narrows. */
+nav a,.nav-dropdown-trigger{font-size:16px!important}
+@media(max-width:1050px) and (min-width:761px){
+  .header-inner{height:auto;min-height:66px;padding:7px 9px 7px 18px;flex-wrap:wrap;justify-content:space-between;row-gap:0;column-gap:8px}
+  .brand{font-size:12px!important;flex:0 0 auto}
+  nav{display:flex;position:static;flex:0 1 auto;min-width:0;max-width:calc(100% - 210px);flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;white-space:nowrap}
+  nav a,.nav-dropdown-trigger{width:auto;min-height:42px;font-size:15px!important;padding:6px 7px;white-space:nowrap}
+  nav .nav-resume{margin:0 0 0 4px;padding-inline:10px;justify-content:center}
+}
+@media(max-width:760px){
+  nav a,.nav-dropdown-trigger{font-size:17px!important}
+  .nav-dropdown-trigger .nav-en,.nav-dropdown-trigger .nav-cn{font-size:17px!important}
+  .hero .hero-actions>a.button{font-size:16px!important}
 }
 
 @media(min-width:1101px){
