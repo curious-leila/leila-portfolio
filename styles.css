@@ -1152,7 +1152,7 @@ nav a,.nav-dropdown-trigger{
   line-height:1.4;
   transition:background .18s,color .18s;
 }
-nav a:hover,nav a[aria-current="location"],nav a[aria-current="location"]:hover,.nav-dropdown-trigger:hover,.nav-dropdown:focus-within>.nav-dropdown-trigger{
+nav a:hover,nav a[aria-current="location"]:hover,.nav-dropdown-trigger:hover,.nav-dropdown:focus-within>.nav-dropdown-trigger{
   background:#f0eadf;
   color:var(--new-ink);
   box-shadow:none;
@@ -2151,8 +2151,16 @@ footer{background:transparent!important;border-top-color:#ffffff8c!important}
   box-shadow:none!important;
 }
 /* 去掉内层白色后，导航悬停底色需要自己撑起来 */
-nav a:hover,nav a[aria-current="location"],nav a[aria-current="location"]:hover{
-  background:#eae2d4!important;
+nav a[aria-current="location"]:not(:hover){
+  background:transparent!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+nav a:hover,nav a[aria-current="location"]:hover,.nav-dropdown-trigger:hover,.nav-dropdown:focus-within>.nav-dropdown-trigger{
+  background:var(--nav-accent-blue)!important;
+  color:var(--new-ink)!important;
+  box-shadow:0 4px 12px rgba(34,83,105,.22)!important;
+  transform:translateY(-1px);
 }
 
 /* 2 —— 首屏三个成果标签：字号与内边距同步放大，视觉权重抬起来 */
