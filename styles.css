@@ -474,8 +474,8 @@ details[open] summary{border-bottom-color:var(--outline-deep)}
   }
 }
 
-/* Keep the three reading modules comfortable and consistent on wide screens. */
-#about,#projects,#skills{
+/* Keep the reading modules comfortable and consistent on wide screens. */
+#about,#experience,#projects,#skills{
   width:100%;
   max-width:1020px;
 }
@@ -494,7 +494,7 @@ details[open] summary{border-bottom-color:var(--outline-deep)}
   }
   .eyebrow{top:10px;margin-bottom:22px;font-size:11px;letter-spacing:2px}
   .hero-actions .button{min-height:44px;padding:7px 15px;font-size:15px}
-  #about,#projects,#skills,#contact{max-width:none}
+  #about,#experience,#projects,#skills,#contact{max-width:none}
   #contact .contact{padding:22px 18px}
 }
 
@@ -2592,3 +2592,52 @@ nav a:hover,nav a[aria-current="location"],nav a[aria-current="location"]:hover{
 }
 
 
+
+/* Internship palette and consistent, unaccented card body copy. */
+#experience .project{
+  --case-accent:rgba(241,171,184,.72);
+  --case-wash:rgba(255,220,225,.48);
+  --case-tone:#956171;
+  background:rgba(255,250,250,.88)!important;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.about-copy,
+.education p,
+.direction p,
+.hero .profile-item p,
+.project-description,
+.case-background p,
+.work-list li,
+.work-module p,
+.work-module li,
+.retrospective p,
+.retrospective li,
+.skills-grid p,
+.skills-grid li,
+.contact .contact-copy{
+  font-size:17px!important;
+  font-weight:400!important;
+  line-height:1.85;
+}
+:is(.about-copy,.education p,.direction p,.profile-item p,
+.project-description,.case-background p,.work-list li,.work-module,
+.retrospective,.skills-grid p,.skills-grid li,.contact-copy) :is(strong,b,em){
+  font-size:inherit!important;
+  font-weight:inherit!important;
+  font-style:normal!important;
+  color:inherit!important;
+}
+
+/* Keep the internship role beside the company, with the date on the right. */
+#experience .project-title-row{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+}
+#experience .project-title-row .project-role{margin-left:14px}
+#experience .project-title-row h3{flex:0 0 auto;width:auto}
+@media(max-width:760px){
+  #experience .project-title-row h3{margin-top:0}
+  #experience .project-title-row .project-role{margin-left:6px}
+}
