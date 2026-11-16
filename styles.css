@@ -2524,65 +2524,70 @@ nav a:hover,nav a[aria-current="location"],nav a[aria-current="location"]:hover{
 .scroll-link:hover::after,.scroll-link:focus-visible::after{opacity:1;transform:scaleX(1)}
 .scroll-link{transition:color .2s ease}
 
-/* ⑩ 首屏三个按钮：仿项目卡按钮做「静态就有厚度、悬停抬起加厚、按下回落」的立体手感
-   原静态是纯色块 + 1px inset 描边环，hover 只把底色压深 2px，看着"平"。
-   这里改成四层叠出来（渐变造体积 / 顶部内高光 / 底边实色当厚度 / 柔和外阴影）。
-   底边阴影 blur 必须为 0，且 hover 时要比静态更厚（3px → 6px）才像被抬起来。
-
-   ⚠️ 选择器为什么要带 `.hero ... >a.button`：文件中部有条
-   `.hero .hero-actions>a.button{box-shadow:inset 0 0 0 1px #17343a!important}`，
-   特异度 (0,3,1) 高于 `.hero-actions .button:nth-child(1)` 的 (0,3,0)，
-   同为 !important 时它赢 —— 所以这里必须写到 (0,4,1) 及以上才盖得住。 */
-.hero .hero-actions>a.button{
-  border-width:2px!important;
-  transition:transform .18s cubic-bezier(.2,.9,.3,1.2),box-shadow .18s,background .18s;
-}
+/* 首屏按钮的玻璃底色与交互高光。 */
 .hero .hero-actions>a.button:nth-child(1){
-  background:linear-gradient(180deg,#2c5158 0%,#17343a 100%)!important;
-  box-shadow:inset 0 1px 0 #ffffff33,0 3px 0 #0e2226,0 8px 16px -9px #17343a80!important;
-}
-.hero .hero-actions>a.button:nth-child(1):hover{
-  background:linear-gradient(180deg,#39646c 0%,#1e4349 100%)!important;
-  transform:translateY(-2px)!important;
-  box-shadow:inset 0 1px 0 #ffffff4d,0 6px 0 #0a1b1f,0 18px 26px -14px #17343acc!important;
+  --glass-tint: #f5b8cd;
+  --glass-shadow: #ab5c79;
 }
 .hero .hero-actions>a.button:nth-child(2){
-  background:linear-gradient(180deg,#e2f8ef 0%,#c9efdf 100%)!important;
-  box-shadow:inset 0 1px 0 #ffffff,0 3px 0 #94c9b4,0 8px 16px -9px #c9efdf99!important;
-}
-.hero .hero-actions>a.button:nth-child(2):hover{
-  background:linear-gradient(180deg,#d6f5e9 0%,#a9e6d1 100%)!important;
-  transform:translateY(-2px)!important;
-  box-shadow:inset 0 1px 0 #ffffff,0 6px 0 #7fb9a2,0 18px 26px -14px #94c9b4cc!important;
+  --glass-tint: #f7df89;
+  --glass-shadow: #a68a3d;
 }
 .hero .hero-actions>a.button:nth-child(3){
-  background:linear-gradient(180deg,#e2f5fe 0%,#c7eafd 100%)!important;
-  box-shadow:inset 0 1px 0 #ffffff,0 3px 0 #93c6de,0 8px 16px -9px #c7eafd99!important;
+  --glass-tint: #9dd5f4;
+  --glass-shadow: #4c91b5;
 }
-.hero .hero-actions>a.button:nth-child(3):hover{
-  background:linear-gradient(180deg,#d5f0fd 0%,#a9ddf7 100%)!important;
-  transform:translateY(-2px)!important;
-  box-shadow:inset 0 1px 0 #ffffff,0 6px 0 #7fb4cd,0 18px 26px -14px #93c6decc!important;
+.hero .hero-actions>a.button:nth-child(n){
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--new-ink) !important;
+  background: linear-gradient(150deg, #ffffffc9, transparent 58%),
+              color-mix(in srgb, var(--glass-tint) 76%, transparent) !important;
+  border: 1px solid #fffffff2 !important;
+  box-shadow: inset 0 1px 1px #fff, inset 0 -2px 4px #ffffff6b,
+              0 2px 0 color-mix(in srgb, var(--glass-shadow) 33%, transparent),
+              0 6px 14px color-mix(in srgb, var(--glass-shadow) 22%, transparent) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(155%);
+  backdrop-filter: blur(14px) saturate(155%);
+  transition: transform .24s ease, box-shadow .24s ease, background-color .24s ease;
 }
-/* ⚠️ 按下态必须逐条带 :nth-child：鼠标按住时元素同时命中 :hover，
-   而 `.hero .hero-actions>a.button:nth-child(n):hover` 的特异度 (0,5,1) 高于
-   不带 nth 的 `...:active` (0,4,1) —— 不写 nth 的话 hover 会把按下态盖掉。 */
-.hero .hero-actions>a.button:nth-child(1):active,
-.hero .hero-actions>a.button:nth-child(2):active,
-.hero .hero-actions>a.button:nth-child(3):active{
-  transform:translateY(2px)!important;
-  box-shadow:inset 0 2px 4px #00000026,0 0 0 #0e2226,0 4px 10px -8px #17343a66!important;
+.hero .hero-actions>a.button::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(112deg, transparent 32%, #ffffffb8 50%, transparent 68%)
+              -140% 0 / 190% 100% no-repeat;
+  background-position: 175% 0;
 }
-
-/* ⚠️ 无障碍：这里的特异度也必须跟上上面带 :nth-child 的 hover/active，
-   否则 (0,4,1) 的 transform:none!important 会被 (0,5,1) 的位移动画盖掉。 */
-@media(prefers-reduced-motion:reduce){
-  .hero .hero-actions>a.button:nth-child(1):hover,
-  .hero .hero-actions>a.button:nth-child(2):hover,
-  .hero .hero-actions>a.button:nth-child(3):hover,
-  .hero .hero-actions>a.button:nth-child(1):active,
-  .hero .hero-actions>a.button:nth-child(2):active,
-  .hero .hero-actions>a.button:nth-child(3):active{transform:none!important}
+@media (hover: hover){
+  .hero .hero-actions>a.button:nth-child(n):hover{
+    transform: translateY(-4px) !important;
+    background-color: color-mix(in srgb, var(--glass-tint) 92%, transparent) !important;
+    box-shadow: inset 0 1px 2px #fff, inset 0 -2px 4px #ffffffa6,
+                0 3px 0 color-mix(in srgb, var(--glass-shadow) 36%, transparent),
+                0 12px 22px color-mix(in srgb, var(--glass-shadow) 38%, transparent) !important;
+  }
+  .hero .hero-actions>a.button:hover::after{
+    background-position: -85% 0;
+    transition: background-position .58s ease-out;
+  }
+}
+.hero .hero-actions>a.button:nth-child(n):active{
+  transform: translateY(1px) !important;
+}
+.hero .hero-actions>a.button:focus-visible{
+  outline: 2px solid var(--new-ink);
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce){
+  .hero .hero-actions>a.button:nth-child(n){
+    transition: none;
+    transform: none !important;
+  }
+  .hero .hero-actions>a.button:hover::after{transition: none}
   .scroll-link::after{transition:none}
 }
 
@@ -2706,6 +2711,7 @@ nav a:hover,nav a[aria-current="location"],nav a[aria-current="location"]:hover{
 }
 
 @media(min-width:1101px){
+  .hero .hero-copy{transform:translate(clamp(0px, calc(32vw - 350px), 110px), 50px)}
   .hero .profile-card{transform:translateX(-100px)}
 }
 .platform-data-stack{
