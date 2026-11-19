@@ -2782,3 +2782,5 @@ nav a,.nav-dropdown-trigger{font-size:16px!important}
 }
 
 .quote-edge{white-space:nowrap}.corner-mark{display:inline-block;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",sans-serif;transform:scaleY(.75);transform-origin:center}
+
+.corner-mark-close{transform:translateY(.12em) scaleY(.75)}
