@@ -95,7 +95,7 @@ document.addEventListener('keydown', event => {
 document.addEventListener('click', event => {
   if (!event.target.closest('.header-inner')) closeMenu();
 });
-window.matchMedia('(max-width: 600px)').addEventListener('change', () => closeMenu());
+window.matchMedia('(max-width: 760px)').addEventListener('change', () => closeMenu());
 
 workDropdownTrigger?.addEventListener('click', () => {
   const open = workDropdownTrigger.getAttribute('aria-expanded') !== 'true';
